@@ -1,0 +1,12 @@
+.scroll-component {
+  transition: opacity 0.5s ease-in-out;
+}
+
+.scroll-component.hidden {
+  opacity: 0;
+  pointer-events: none; /* Prevent interaction */
+}
+
+.scroll-component.visible {
+  opacity: 1;
+}
