@@ -11,4 +11,19 @@ html, body {
     justify-content: center;
     /* Add additional styles as needed */
   }
+  .section {
+    height: 100vh; /* Full viewport height */
+    overflow-y: auto; /* Enable scrolling if content exceeds */
+    padding: 20px; /* Add padding for spacing */
+    box-sizing: border-box; /* Include padding in height */
+}
 
+.section:not(:last-child) {
+    margin-bottom: 20px; /* Space between sections */
+}
+
+/* Optional: Add background color or border for visibility */
+.section {
+    background-color: white; /* Change as needed */
+    border-bottom: 1px solid #ccc; /* Optional visual separation */
+}

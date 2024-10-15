@@ -2,18 +2,53 @@
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { BiX } from 'react-icons/bi';
-import TimePicker from 'react-time-picker';
-import 'react-time-picker/dist/TimePicker.css';
+import { BiX, BiAlarm, BiSend } from 'react-icons/bi';
+import Clock from 'react-clock';
+import 'react-clock/dist/Clock.css';
 
 const Popup = ({ onClose }) => {
     const [selectedDate, setSelectedDate] = useState(null);
-    const [selectedTime, setSelectedTime] = useState('10:00');
+    const [selectedTime, setSelectedTime] = useState(new Date());
 
     // Get today's date
     const today = new Date();
     const minDate = today;
     const maxDate = new Date(today.getFullYear(), today.getMonth() + 1, today.getDate());
+
+    const handleReadyForMeet = () => {
+        const timeString = selectedTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        console.log(`Meeting scheduled for ${selectedDate?.toLocaleDateString()} at ${timeString}`);
+        onClose();
+    };
+
+    const handleClockChange = (newTime) => {
+        setSelectedTime(newTime);
+    };
+
+    // Helper functions to adjust time
+    const incrementHour = () => {
+        const newTime = new Date(selectedTime);
+        newTime.setHours((newTime.getHours() + 1) % 24);
+        setSelectedTime(newTime);
+    };
+
+    const decrementHour = () => {
+        const newTime = new Date(selectedTime);
+        newTime.setHours((newTime.getHours() - 1 + 24) % 24);
+        setSelectedTime(newTime);
+    };
+
+    const incrementMinute = () => {
+        const newTime = new Date(selectedTime);
+        newTime.setMinutes((newTime.getMinutes() + 1) % 60);
+        setSelectedTime(newTime);
+    };
+
+    const decrementMinute = () => {
+        const newTime = new Date(selectedTime);
+        newTime.setMinutes((newTime.getMinutes() - 1 + 60) % 60);
+        setSelectedTime(newTime);
+    };
 
     return (
         <div
@@ -48,21 +83,42 @@ const Popup = ({ onClose }) => {
                         }
                         popperClassName="bg-white shadow-lg rounded-md"
                     />
+                    {selectedDate && (
+                        <div className="mt-2 text-center">
+                            <strong>Selected Date: {selectedDate.toLocaleDateString()}</strong>
+                        </div>
+                    )}
                 </div>
                 
                 <div className="md:w-1/2 md:pl-5 mt-4 md:mt-0">
-                    <h3 className="text-lg font-semibold mb-2">Selected Date:</h3>
-                    <p className="text-lg mb-4 text-gray-600">
-                        {selectedDate ? selectedDate.toLocaleDateString() : 'No date selected'}
-                    </p>
-                    <h3 className="text-lg font-semibold mb-2">Select Time:</h3>
-                    <TimePicker
-                        onChange={setSelectedTime}
+                    <h3 className="text-lg font-semibold mb-2 flex items-center">
+                        <BiAlarm className="mr-2" /> Select Time:
+                    </h3>
+                    <div className="flex items-center mb-2">
+                        <div className="border rounded-md p-2 w-full bg-gray-100 flex items-center justify-between">
+                            <span>{selectedTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+                            <BiAlarm />
+                        </div>
+                    </div>
+                    <Clock
                         value={selectedTime}
-                        disableClock
-                        clearIcon={null}
-                        className="border rounded-md p-2 w-full bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        onChange={handleClockChange}
+                        className="border rounded-md p-2 bg-gray-100"
                     />
+                    <div className="flex justify-between mt-2">
+                        <button onClick={decrementHour} className="text-blue-500">- Hour</button>
+                        <button onClick={incrementHour} className="text-blue-500">+ Hour</button>
+                    </div>
+                    <div className="flex justify-between mt-2">
+                        <button onClick={decrementMinute} className="text-blue-500">- Min</button>
+                        <button onClick={incrementMinute} className="text-blue-500">+ Min</button>
+                    </div>
+                    <button
+                        onClick={handleReadyForMeet}
+                        className="mt-4 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 flex items-center justify-center"
+                    >
+                        <BiSend className="mr-2" /> Ready for Meet
+                    </button>
                 </div>
             </div>
         </div>

@@ -5,6 +5,7 @@ import Typewriter from './component/BI-Text';
 import Information from './component/BI-inform';
 import Services from './component/Services';
 import Meet from './component/BI-Meet';
+import Team from './component/BI-Team';
 import ParticlesBackground from './particalbackground';
 import MotionSection from './Motion';
 import { ThemeProvider, useTheme } from './themeContext'; 
@@ -15,6 +16,7 @@ const sections = [
     { component: <Header /> },
     { component: <Typewriter /> },
     { component: <Information /> },
+    { component: <Team /> },
     { component: <Services /> },
     { component: <Meet /> },
 ];

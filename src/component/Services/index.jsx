@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { FaHtml5, FaCss3Alt, FaJsSquare, FaReact, FaSass, FaNodeJs, FaNpm, FaWordpressSimple, FaPython } from 'react-icons/fa';
 import { SiMongodb } from "react-icons/si";
 import { motion } from 'framer-motion';
@@ -6,47 +6,47 @@ import { motion } from 'framer-motion';
 // Mapping of service titles to their respective arrays of icons
 const icons = {
   'Website Design': [
-    <FaHtml5 className=" animate-bounce" size={30} />,
-    <FaCss3Alt className=" animate-bounce" size={30} />,
-    <FaReact className=" animate-bounce" size={30} />,
+    <FaHtml5 className="animate-bounce" size={30} />,
+    <FaCss3Alt className="animate-bounce" size={30} />,
+    <FaReact className="animate-bounce" size={30} />,
   ],
   'Mobile Applications': [
-    <FaJsSquare className=" animate-bounce" size={30} />,
-    <FaReact className=" animate-bounce" size={30} />,
-    <FaNodeJs className=" animate-bounce" size={30} />,
+    <FaJsSquare className="animate-bounce" size={30} />,
+    <FaReact className="animate-bounce" size={30} />,
+    <FaNodeJs className="animate-bounce" size={30} />,
   ],
   'Web Applications': [
-    <FaReact className=" animate-bounce" size={30} />,
-    <FaNodeJs className=" animate-bounce" size={30} />,
-    <SiMongodb className=" animate-bounce" size={30} />,
+    <FaReact className="animate-bounce" size={30} />,
+    <FaNodeJs className="animate-bounce" size={30} />,
+    <SiMongodb className="animate-bounce" size={30} />,
   ],
   'E-commerce Websites': [
-    <FaSass className=" animate-bounce" size={30} />,
-    <FaHtml5 className=" animate-bounce" size={30} />,
-    <FaCss3Alt className=" animate-bounce" size={30} />,
+    <FaSass className="animate-bounce" size={30} />,
+    <FaHtml5 className="animate-bounce" size={30} />,
+    <FaCss3Alt className="animate-bounce" size={30} />,
   ],
   'Database Management': [
-    <SiMongodb className=" animate-bounce" size={30} />,
-    <FaNodeJs className=" animate-bounce" size={30} />,
+    <SiMongodb className="animate-bounce" size={30} />,
+    <FaNodeJs className="animate-bounce" size={30} />,
   ],
   'API Development': [
-    <FaNodeJs className=" animate-bounce" size={30} />,
-    <FaNpm className=" animate-bounce" size={30} />,
-    <FaReact className=" animate-bounce" size={30} />,
+    <FaNodeJs className="animate-bounce" size={30} />,
+    <FaNpm className="animate-bounce" size={30} />,
+    <FaReact className="animate-bounce" size={30} />,
   ],
   'Business Integration and Automations': [
-    <FaNpm className=" animate-bounce" size={30} />,
-    <FaNodeJs className=" animate-bounce" size={30} />,
+    <FaNpm className="animate-bounce" size={30} />,
+    <FaNodeJs className="animate-bounce" size={30} />,
   ],
   'Graphic Designing': [
-    <FaCss3Alt className=" animate-bounce" size={30} />,
-    <FaReact className=" animate-bounce" size={30} />,
-    <FaSass className=" animate-bounce" size={30} />,
+    <FaCss3Alt className="animate-bounce" size={30} />,
+    <FaReact className="animate-bounce" size={30} />,
+    <FaSass className="animate-bounce" size={30} />,
   ],
   'Video Editing': [
-    <FaWordpressSimple className=" animate-bounce" size={30} />,
-    <FaPython className=" animate-bounce" size={30} />,
-    <FaReact className=" animate-bounce" size={30} />,
+    <FaWordpressSimple className="animate-bounce" size={30} />,
+    <FaPython className="animate-bounce" size={30} />,
+    <FaReact className="animate-bounce" size={30} />,
   ],
 };
 
@@ -64,7 +64,7 @@ const services = [
 
 const ServiceCard = ({ title, description, icons, isLeft }) => (
   <motion.div
-    className={`max-w-md h-48 rounded-lg border-2 border-darkColor dark:border-lightColor bg-gradient-to-br from-purple-600 to-blue-600 text-lightColor p-6 m-4 flex flex-col justify-between items-center text-center transition-transform transform hover:scale-110 hover:shadow-2xl hover:shadow-blue-500 ease-in-out relative overflow-hidden ${isLeft ? 'mr-auto' : 'ml-auto'}`}
+    className={`max-w-md h-48 rounded-lg border-2 border-darkColor dark:border-lightColor bg-thirdprimary text-lightColor p-6 m-4 flex flex-col justify-between items-center text-center transition-transform transform hover:scale-110 hover:shadow-2xl hover:shadow-blue-500 ease-in-out relative overflow-hidden ${isLeft ? 'mr-auto' : 'ml-auto'}`}
     initial={{ opacity: 0, x: isLeft ? -50 : 50 }}
     animate={{ opacity: 1, x: 0 }}
     transition={{ duration: 0.5 }}
@@ -83,12 +83,29 @@ const ServiceCard = ({ title, description, icons, isLeft }) => (
 );
 
 const Services = () => {
-  const [showMeet, setShowMeet] = useState(false);
+  const servicesRef = useRef(null);
 
+  const handleScroll = (event) => {
+    event.stopPropagation();
+  };
 
+  useEffect(() => {
+    const currentRef = servicesRef.current;
+    if (currentRef) {
+      currentRef.addEventListener('wheel', handleScroll, { passive: false });
+
+      return () => {
+        currentRef.removeEventListener('wheel', handleScroll);
+      };
+    }
+  }, []);
 
   return (
-    <div className="min-h-screen overflow-hidden p-4"  style={{ overflowY: 'auto', height: '100vh' }}>
+    <div 
+      ref={servicesRef} 
+      className="min-h-screen overflow-hidden p-4"  
+      style={{ overflowY: 'auto', height: '100vh' }}
+    >
       {/* Icons Section */}
       <motion.div
         className="flex justify-around items-center p-4 mt-7"
@@ -158,8 +175,6 @@ const Services = () => {
         </div>
         <div className="absolute h-full border-l-2 border-darkGray dark:border-lightGray left-1/2 transform -translate-x-1/2 top-0"></div>
       </div>
-
-
     </div>
   );
 };

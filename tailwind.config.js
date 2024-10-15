@@ -1,3 +1,5 @@
+import { linearGradient } from 'framer-motion/client';
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -13,6 +15,7 @@ export default {
         lightGray: '#e5e7eb',
         darkColor: '#000000',  // Removed extra space
         darkGray: '#1f2937',
+        thirdprimary: '#2563eb'
       },
     },
   },

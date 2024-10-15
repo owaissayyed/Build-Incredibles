@@ -8,18 +8,18 @@ const Terminal = ({ text }) => {
   const { theme } = useTheme(); // Access current theme
   return (
     <motion.div
-    className={`terminal bg-lightColor dark:bg-darkColor border-darkColor dark:border-lightColor`}
+    className={`terminal bg-darkColor border-darkColor dark:border-lightColor`}
       initial={{ rotateY: 90, opacity: 0 }}
       animate={{ rotateY: 0, opacity: 1 }}
       transition={{ duration: 0.3, ease: 'easeInOut' }}
     >
-      <div className="terminal-header border-darkColor dark:border-lightColor  text-darkColor dark:text-lightColor">
+      <div className="terminal-header :border-lightColor  text-lightColor">
         <span className="dot red"></span>
         <span className="dot yellow"></span>
         <span className="dot green"></span>
         <span className="title">Build_Incredibles.sh</span>
       </div>
-      <div className="terminal-body  text-darkColor dark:text-lightColor">
+      <div className="terminal-body  text-lightColor">
         <pre>{text}</pre>
       </div>
     </motion.div>
