@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaHtml5, FaCss3Alt, FaJsSquare, FaReact, FaSass, FaNodeJs, FaNpm, FaWordpressSimple, FaPython } from 'react-icons/fa';
 import { SiMongodb } from "react-icons/si";
 import { motion } from 'framer-motion';
@@ -64,7 +64,7 @@ const services = [
 
 const ServiceCard = ({ title, description, icons, isLeft }) => (
   <motion.div
-    className={`max-w-md h-48 rounded-lg border-2 border-white bg-gradient-to-br from-purple-600 to-blue-600 text-white p-6 m-4 flex flex-col justify-between items-center text-center transition-transform transform hover:scale-110 hover:shadow-2xl hover:shadow-blue-500 duration-300 ease-in-out relative overflow-hidden ${isLeft ? 'mr-auto' : 'ml-auto'}`}
+    className={`max-w-md h-48 rounded-lg border-2 border-white bg-gradient-to-br from-purple-600 to-blue-600 text-white p-6 m-4 flex flex-col justify-between items-center text-center transition-transform transform hover:scale-110 hover:shadow-2xl hover:shadow-blue-500 ease-in-out relative overflow-hidden ${isLeft ? 'mr-auto' : 'ml-auto'}`}
     initial={{ opacity: 0, x: isLeft ? -50 : 50 }}
     animate={{ opacity: 1, x: 0 }}
     transition={{ duration: 0.5 }}
@@ -83,8 +83,12 @@ const ServiceCard = ({ title, description, icons, isLeft }) => (
 );
 
 const Services = () => {
+  const [showMeet, setShowMeet] = useState(false);
+
+
+
   return (
-    <div className="min-h-screen overflow-hidden p-4">
+    <div className="min-h-screen overflow-hidden p-4"  style={{ overflowY: 'auto', height: '100vh' }}>
       {/* Icons Section */}
       <motion.div
         className="flex justify-around items-center p-4 mt-7"
@@ -154,6 +158,8 @@ const Services = () => {
         </div>
         <div className="absolute h-full border-l-2 border-gray-300 left-1/2 transform -translate-x-1/2 top-0"></div>
       </div>
+
+
     </div>
   );
 };

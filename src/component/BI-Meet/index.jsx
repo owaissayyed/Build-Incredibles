@@ -1,6 +1,6 @@
 // Meet.jsx
 import React, { useState } from 'react';
-import Popup from '../../Popup'; // Adjust the path if necessary
+import Popup from '../../Popup'; 
 import { motion } from 'framer-motion';
 
 const Meet = () => {
