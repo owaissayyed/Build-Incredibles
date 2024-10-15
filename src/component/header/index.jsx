@@ -1,8 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Typewriter } from "react-simple-typewriter";
+import { useTheme } from '../../themeContext'; // Adjust the path based on your file structure
 
 const Header = () => {
+    const { toggleTheme } = useTheme(); // Access the theme toggle function
+
     const textVariants = {
         hidden: { opacity: 0, x: 100, scale: 0.9 },
         visible: { opacity: 1, x: 0, scale: 1 },
@@ -14,22 +17,22 @@ const Header = () => {
     };
 
     return (
-        <div className='h-lvh flex justify-center items-center text-center'>
-            <div className='w-90'>
+        <div className="h-lvh flex flex-col justify-center items-center text-center ">
+            <div className="w-90">
                 <motion.div 
                     variants={containerVariants} 
                     initial="hidden" 
                     animate="visible"
                 >
                     <motion.h1 
-                        className='text-5xl font-bold text-lightColor'
+                        className="text-5xl font-bold text-darkColor dark:text-lightColor"
                         variants={textVariants}
                         transition={{ duration: 0.5 }}
                     >
                         Take your business online,
                     </motion.h1>
                     <motion.h1 
-                        className='text-5xl font-bold text-primary'
+                        className="text-5xl font-bold text-secondprimary dark:text-primary"
                         variants={{ ...textVariants, hidden: { ...textVariants.hidden, x: -100 } }}
                         transition={{ duration: 0.5 }}
                     >
@@ -38,7 +41,7 @@ const Header = () => {
                 </motion.div>
 
                 <motion.p 
-                    className='mt-2 text-lightColor font-bold'
+                    className="mt-2 text-darkColor dark:text-lightColor font-bold"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.6 }}
@@ -46,7 +49,7 @@ const Header = () => {
                     Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                 </motion.p>
                 <motion.p 
-                    className='text-lightColor font-bold'
+                    className="text-darkColor dark:text-lightColor font-bold"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.8 }}
@@ -54,6 +57,8 @@ const Header = () => {
                     Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
                 </motion.p>
             </div>
+
+
         </div>
     );
 };

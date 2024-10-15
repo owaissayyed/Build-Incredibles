@@ -29,7 +29,7 @@ const Meet = () => {
         <div className='h-lvh flex justify-center items-center text-center'>
             <div className='w-90'>
                 <motion.h1 
-                    className='text-5xl font-bold text-lightColor' 
+                    className='text-5xl font-bold text-darkColor dark:text-lightColor' 
                     initial="hidden"
                     animate="visible"
                     variants={textVariants}
@@ -37,7 +37,7 @@ const Meet = () => {
                     Take your business online,
                 </motion.h1>
                 <motion.h1 
-                    className='text-5xl font-bold text-lightColor' 
+                    className='text-5xl font-bold text-darkColor dark:text-lightColor' 
                     initial="hidden"
                     animate="visible"
                     variants={textVariants}
@@ -46,7 +46,7 @@ const Meet = () => {
                     Reach out to the global audience.
                 </motion.h1>
                 <motion.p 
-                    className='mt-2 text-lightColor font-bold' 
+                    className='mt-2 text-darkColor dark:text-lightColor font-bold' 
                     initial="hidden"
                     animate="visible"
                     variants={textVariants}
@@ -57,7 +57,7 @@ const Meet = () => {
 
                 {/* Button */}
                 <motion.button 
-                    className='mt-10 px-4 py-2 bg-blue-600 text-white font-semibold rounded-lg transform transition-transform duration-200 hover:scale-105 hover:bg-blue-500'
+                    className='mt-10 px-4 py-2 bg-blue-600 text-darkColor dark:text-lightColor font-semibold rounded-lg transform transition-transform duration-200 hover:scale-105 hover:bg-blue-500'
                     onClick={handleButtonClick}
                     initial="hidden"
                     animate="visible"

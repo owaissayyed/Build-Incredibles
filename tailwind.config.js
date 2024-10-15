@@ -6,11 +6,16 @@ export default {
   ],
   theme: {
     extend: {
-      colors:{
-        primary:'#30D5C8',
-        lightColor:'white',
+      colors: {
+        primary: '#30D5C8',
+        secondprimary: '#2563eb',
+        lightColor: 'white',
+        lightGray: '#e5e7eb',
+        darkColor: '#000000',  // Removed extra space
+        darkGray: '#1f2937',
       },
     },
   },
+  darkMode: 'class', // Enable dark mode based on class
   plugins: [],
-}
+};

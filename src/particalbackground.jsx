@@ -2,30 +2,51 @@
 import React, { useEffect } from 'react';
 import { tsParticles } from "https://cdn.jsdelivr.net/npm/@tsparticles/engine@3.1.0/+esm";
 import { loadAll } from "https://cdn.jsdelivr.net/npm/@tsparticles/all@3.1.0/+esm";
+import { useTheme } from './themeContext';
+import { tailwindTheme } from './tailwindTheme';
 
 const ParticleBackground = () => {
+  const { theme } = useTheme();
+
   useEffect(() => {
     const loadParticles = async () => {
       await loadAll(tsParticles);
-      await tsParticles.load({ id: "tsparticles", options: {
+      
+      const options = {
         particles: {
           number: { value: 30 },
-          color: { value: "primary" },
-          links: { enable: true, distance: 200 },
+          color: '', 
+          links: {
+            enable: true,
+            distance: 210,
+            color: theme === 'dark' ? tailwindTheme.lightColor : tailwindTheme.darkColor, 
+          },
           shape: { type: "circle" },
-          opacity: { value: 10 },
-          size: { value: { min: 4, max: 6 } },
-          move: { enable: true, speed: 1 }
+          size: { value: { min: 4, max: 1} }, 
+          move: { enable: true, speed: 1 },
         },
-        background: { color: "#000000" },
-        poisson: { enable: true }
-      }});
+        background: { color: theme === 'dark' ? tailwindTheme.darkColor : tailwindTheme.lightColor }, 
+        poisson: { enable: true },
+      };
+
+      await tsParticles.load({ id: "tsparticles", options });
     };
 
     loadParticles();
-  }, []);
-
-  return <div id="tsparticles" style={{ position: 'absolute', width: '100%', height: '100%', top: 0, left: 0, zIndex: -1 }} />;
+  }, [theme]); 
+  return (
+    <div
+      id="tsparticles"
+      style={{
+        position: 'absolute',
+        width: '100%',
+        height: '100%',
+        top: 0,
+        left: 0,
+        zIndex: -1,
+      }}
+    />
+  );
 };
 
 export default ParticleBackground;
