@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { Typewriter } from 'react-simple-typewriter';
 import { motion } from 'framer-motion';
-import './Terminal.css'; 
-import { useTheme } from '../../themeContext'; // Adjust the path based on your file structure
+import './Terminal.css';
+import { useTheme } from '../../themeContext';
+import { useInView } from 'react-intersection-observer';
 
-const Terminal = ({ text }) => {
+
+const Terminal = ({ terminalString, currentTextIndex }) => {
   const { theme } = useTheme(); // Access current theme
   return (
     <motion.div
-    className={`terminal bg-darkColor border-darkColor dark:border-lightColor`}
+      className={`terminal bg-darkColor border-darkColor dark:border-lightColor`}
       initial={{ rotateY: 90, opacity: 0 }}
       animate={{ rotateY: 0, opacity: 1 }}
       transition={{ duration: 0.3, ease: 'easeInOut' }}
@@ -20,7 +22,27 @@ const Terminal = ({ text }) => {
         <span className="title">Build_Incredibles.sh</span>
       </div>
       <div className="terminal-body  text-lightColor">
-        <pre>{text}</pre>
+        {terminalString.map((text, i) => {
+          return (
+            <>
+              {currentTextIndex >= i ?
+                <pre>
+                  <Typewriter
+                    key={0}
+                    words={[text]}
+                    loop={1}
+                    cursor={currentTextIndex > i ? false : true}
+                    cursorStyle="_"
+                    typeSpeed={10}
+                    delaySpeed={3000}
+                    onComplete={() => setCurrentTextIndex(prevIndex => prevIndex + 1)}
+                  />
+                </pre>
+                : <></>
+              }
+            </>
+          )
+        })}
       </div>
     </motion.div>
   );
@@ -28,40 +50,51 @@ const Terminal = ({ text }) => {
 
 const Information = () => {
   const [showTerminal, setShowTerminal] = useState(false);
+  const [currentTextIndex, setCurrentTextIndex] = useState(0);
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.5,
+  });
+
+  const terminalString = [
+    `$ sudo ./Build_Incredibles.sh`,
+    `$ At Build Incredibles, we are a team of passionate developers committed to creating world-class technology for your organisation. Our focus is on delivering cutting-edge solutions in the shortest time, with top-tier security and precision, ensuring your product shines in the competitive market.`,
+    `Let's build something incredible together!🚀`
+  ];
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowTerminal(true);
-    }, 500); // Delay before showing the terminal
+    if (inView) {
+      const timer = setTimeout(() => {
+        setShowTerminal(true);
+      }, 500);
 
-    return () => clearTimeout(timer);
-  }, []);
+      return () => clearTimeout(timer);
+    }
+  }, [inView]);
+
+  useEffect(() => {
+    if (showTerminal && currentTextIndex < terminalString.length) {
+      const typingDuration = (terminalString[currentTextIndex].length * 10) + 3000; // Adjust time based on typing speed and delay
+      const timer = setTimeout(() => {
+        setCurrentTextIndex(prevIndex => prevIndex + 1);
+      }, typingDuration);
+
+      return () => clearTimeout(timer);
+    }
+  }, [showTerminal, currentTextIndex]);
 
   return (
-    <div className='min-h-screen flex justify-center items-center'>
-      {showTerminal && (
+    <section
+      ref={ref}
+      className={`h-screen flex justify-center items-center snap-start`}
+    >
+      {showTerminal ?
         <Terminal
-          text={
-            <Typewriter
-              words={[`
-$ sudo ./Build_Incredibles.sh
-$ At Build Incredibles, we are a team of passionate 
-developers committed to creating world-class technology for 
-your organisation. Our focus is on delivering cutting-edge 
-solutions in the shortest time, with top-tier security and 
-precision, ensuring your product shines in the competitive 
-market.
-Let's build something incredible together!🚀`]}
-              loop={1}
-              cursor
-              cursorStyle="_"
-              typeSpeed={10}
-              delaySpeed={1000}
-            />
-          }
+          currentTextIndex={currentTextIndex}
+          terminalString={terminalString}
         />
-      )}
-    </div>
+        : <></>}
+    </section>
   );
 };
 

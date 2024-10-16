@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Typewriter } from "react-simple-typewriter";
 import { motion } from 'framer-motion';
 import { AiOutlineArrowDown } from 'react-icons/ai';
 import { useTheme } from '../../themeContext';
+import { useInView } from 'react-intersection-observer';
 
 const Information = ({ onScroll }) => {
     const { toggleTheme } = useTheme();
+    const [showContent, setShowContent] = useState(false);
+    const { ref, inView } = useInView({
+        triggerOnce: true,
+        threshold: 0.5,
+    });
 
     const textVariants = {
         hidden: { opacity: 0, scale: 0.8 },
@@ -23,24 +29,35 @@ const Information = ({ onScroll }) => {
         }
     };
 
+    useEffect(() => {
+        if (inView) {
+            setShowContent(true);
+        }
+    }, [inView]);
+
     return (
-        <div className='min-h-screen flex flex-col justify-center items-center text-center relative '>
+        <section
+            ref={ref}
+            className={`h-screen flex justify-center items-center snap-start`}
+        >
             <motion.div
                 className='text-7xl font-bold neon-text text-darkColor dark:text-lightColor'
                 variants={textVariants}
                 initial="hidden"
-                animate="visible"
+                animate={showContent ? "visible" : "hidden"}
                 transition={{ duration: 0.8 }}
             >
-                <Typewriter
-                    words={['Build Incredibles 🚀']}
-                    loop={1}
-                />
+                {showContent && (
+                    <Typewriter
+                        words={['Build Incredibles 🚀']}
+                        loop={1}
+                    />
+                )}
             </motion.div>
 
             <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2">
-                <motion.button 
-                    onClick={onScroll} 
+                <motion.button
+                    onClick={onScroll}
                     className="border-4 border-darkColor dark:border-lightColor rounded-full p-3 cursor-pointer flex justify-center items-center"
                     variants={iconVariants}
                     animate="float"
@@ -48,7 +65,7 @@ const Information = ({ onScroll }) => {
                     <AiOutlineArrowDown className="text-3xl text-darkColor dark:text-lightColor" />
                 </motion.button>
             </div>
-        </div>
+        </section>
     );
 };
 

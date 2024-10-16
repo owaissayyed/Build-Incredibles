@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import './Team.css'; 
+import './Team.css';
 
 const teamMembers = [
   {
@@ -121,12 +121,13 @@ const TeamComponent = () => {
   }, []);
 
   return (
-    <div 
-      ref={teamRef} 
-      className="py-12"  
-      style={{ overflowY: 'auto', height: '100vh' }}
-    >
-      <h2 className="text-3xl font-bold text-center mb-8 text-darkColor dark:text-lightColor">Meet Our Team</h2>
+    // <div 
+    //   ref={teamRef} 
+    //   className="py-12"  
+    //   style={{ overflowY: 'auto', height: '100vh' }}
+    // >
+    <section className={`h-screen py-12  snap-start`}>
+      <h2 className="text-3xl font-bold text-center mb-8 text-darkColor dark:text-lightColor ">Meet Our Team</h2>
 
       <div className="flex flex-wrap justify-center ">
         {teamMembers.map((member, index) => (
@@ -153,7 +154,7 @@ const TeamComponent = () => {
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -11,21 +11,6 @@ import MotionSection from './Motion';
 import { ThemeProvider, useTheme } from './themeContext';
 import { AiOutlineSun, AiOutlineMoon } from 'react-icons/ai';
 import { motion } from 'framer-motion';
-import Timeline from './component/Timeline/Timeline';
-
-
-const Section = ({ title, children, bgColor }) => {
-    return (
-        <section className={`h-screen flex justify-center items-center ${bgColor} snap-start`}>
-            <div className="text-center p-4">
-                <h1 className="text-3xl font-bold mb-4">{title}</h1>
-                <div className="max-w-md mx-auto">
-                    {children}
-                </div>
-            </div>
-        </section>
-    );
-};
 
 const sections = [
     { component: <Header /> },
@@ -69,12 +54,12 @@ const App = () => {
         console.log('Scrolling to section:', nextIndex);
     };
 
-    // useEffect(() => {
-    //     window.addEventListener('wheel', handleScroll, { passive: false });
-    //     return () => {
-    //         window.removeEventListener('wheel', handleScroll);
-    //     };
-    // }, []);
+    useEffect(() => {
+        window.addEventListener('wheel', handleScroll, { passive: false });
+        return () => {
+            window.removeEventListener('wheel', handleScroll);
+        };
+    }, []);
 
     const buttonVariants = {
         float: {
@@ -88,16 +73,45 @@ const App = () => {
     };
 
     return (
-        <div className="snap-y snap-mandatory h-screen overflow-y-scroll ">
+        <>
             <ParticlesBackground />
-            <Header />
-            <Typewriter />
-            <Information />
-            <Team />
-            <Services />
-            <Timeline />
-            <Meet />
-        </div >
+            <div
+            // onScroll={scrollToNextSection}
+            >
+                {sections.map((section, index) => (
+                    <div
+                        key={index}
+                        ref={el => (sectionRefs.current[index] = el)}
+                        className="h-screen"
+                    >
+                        <MotionSection>
+                            {React.cloneElement(section.component, {
+                                isVisible: visibleSection === index,
+                                // onScroll: scrollToNextSection,
+                                key: visibleSection
+                            })}
+                        </MotionSection>
+                    </div>
+                ))}
+
+                <div className="fixed bottom-5 right-5">
+                    <motion.button
+                        onClick={toggleTheme}
+                        className="p-3 rounded-full shadow-lg border-2 border-darkColor dark:border-lightColor bg-lightGray dark:bg-darkGray transition duration-300"
+                        variants={buttonVariants}
+                        animate="float"
+                    >
+                        {theme === 'dark' ? (
+                            <AiOutlineSun className="text-lightColor" />
+                        ) : (
+                            <AiOutlineMoon className="text-darkColor" />
+                        )}
+                    </motion.button>
+                </div>
+
+
+            </div>
+        </>
     );
 };
 
