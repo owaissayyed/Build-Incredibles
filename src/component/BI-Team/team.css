@@ -1,148 +1,54 @@
-/* Container for the team section */
-.py-12 {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-  overflow-x: hidden;
-}
-
-/* Flex container to center the cards */
-.flex-wrap {
-  display: flex; 
-  flex-wrap: wrap; /* Allows wrapping of cards */
-  justify-content: center; /* Center align cards horizontally */
-}
-
-/* Card container with perspective for 3D effect */
 .card-container {
-  perspective: 1000px; /* Keeps perspective for child elements */
-  margin: 1rem; /* Space around each card */
+  perspective: 1000px;
+  /* margin: 1rem; */
 }
 
-/* Main card styles */
 .card {
   position: relative;
-  width: 240px; /* Width of the card */
-  height: 300px; /* Height of the card */
-  transition: transform 0.6s ease-in-out; /* Smooth transition */
-  transform-style: preserve-3d; /* Preserve 3D for child elements */
-  cursor: pointer; /* Change cursor on hover */
+  /* width: 240px; */
+  /* Match your card width */
+  height: 300px;
+  /* Adjust height as needed */
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
 }
 
-/* Flipped state for the card */
-.card.flipped {
-  transform: rotateY(180deg); /* Rotate the card when flipped */
+.card:hover {
+  transform: rotateY(180deg);
 }
 
-/* Front face of the card */
 .card-front,
 .card-back {
   position: absolute;
   width: 100%;
   height: 100%;
-  backface-visibility: hidden; /* Hide the back face when not flipped */
-  border-radius: 10px; /* Rounded corners */
-  overflow: hidden; /* Hide overflow */
+  backface-visibility: hidden;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
-/* Front face styling */
 .card-front {
-  background-color: white; /* Front face background */
-  z-index: 2; /* Ensure front is on top */
+  background-color: white;
+  /* Adjust as needed */
+  z-index: 2;
+}
+
+.card-back {
+  background-color: #f8f9fa;
+  /* Adjust as needed */
+  transform: rotateY(180deg);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-.card-back {
-  background-color: #f8f9fa; /* Back face background */
-  transform: rotateY(180deg); /* Rotate back face */
-  display: flex;
-  flex-direction: column; /* Stack elements vertically */
-  justify-content: space-between; /* Space between description and icons */
-  align-items: center; /* Center align elements horizontally */
-  padding: 1rem; /* Add padding */
+  padding: 1rem;
 }
 
 .description {
-  margin-bottom: auto; /* Push icons to the bottom */
-  text-align: center; /* Center the description text */
-}
-
-/* Image styles */
-.card-front img {
-  width: 96px; /* Width of the profile image */
-  height: 96px; /* Height of the profile image */
-  object-fit: cover; /* Maintain aspect ratio */
-  border-radius: 50%; /* Circular image */
-  border: 4px solid white; /* White border around the image */
-}
-
-/* Text styles */
-.text-lg {
-  font-size: 1.125rem; /* Large text size */
-}
-
-.text-lightColor {
-  color: #6c757d; /* Light text color */
-}
-
-.text-2xl {
-  font-size: 1.5rem; /* Extra large text size */
-}
-
-/* Social links styling */
-.social-links {
-  display: flex;
-  flex-direction: row; /* Arrange icons in a row */
-  align-items: center; /* Center align the icons vertically */
-  gap: 1rem; /* Space between icons */
+  margin-bottom: 1.5rem;
+  text-align: center;
 }
 
 .social-links a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 40px; /* Width of the icon container */
-  height: 40px; /* Height of the icon container */
-  border: 2px solid #007bff; /* Border color */
-  border-radius: 50%; /* Make it circular */
-  transition: background-color 0.3s, border-color 0.3s; /* Smooth transition */
-}
-
-.social-links a:hover {
-  background-color: #007bff; /* Background color on hover */
-  border-color: #0056b3; /* Darker border on hover */
-}
-
-.social-links a svg {
-  color: white; /* Icon color */
-  font-size: 1.2rem; /* Icon size */
-}
-
-/* Responsive styling */
-@media (max-width: 768px) {
-  .card-container {
-    margin: 0.5rem; /* Reduce margin on smaller screens */
-    width: 90%; /* Allow more space for centering */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .flex-wrap {
-    flex-direction: column; /* Stack cards vertically on smaller screens */
-    align-items: center; /* Center align items */
-  }
-
-  .social-links {
-    flex-direction: row; /* Keep social links in a row */
-    justify-content: center; /* Center align links */
-  }
-}
-
-@media (max-width: 640px) {
-  .card-container {
-    width: 100%; /* Ensure full width on extra small screens */
-  }
+  margin: 0 5px;
 }

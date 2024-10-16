@@ -28,7 +28,7 @@ const Meet = () => {
         <section className={`h-screen flex justify-center items-center text-center  snap-start p-4 overflow-auto`}>
             <div className='w-90'>
                 <motion.h1
-                    className='text-5xl font-bold text-darkColor dark:text-lightColor'
+                    className='text-2xl sm:text-4xl md:text-5xl   font-bold text-darkColor dark:text-lightColor'
                     initial="hidden"
                     animate="visible"
                     variants={textVariants}
@@ -36,7 +36,7 @@ const Meet = () => {
                     Take your business online,
                 </motion.h1>
                 <motion.h1
-                    className='text-5xl font-bold text-darkColor dark:text-lightColor'
+                    className='text-2xl sm:text-4xl md:text-5xl font-bold text-darkColor dark:text-lightColor'
                     initial="hidden"
                     animate="visible"
                     variants={textVariants}

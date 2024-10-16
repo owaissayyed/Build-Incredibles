@@ -3,9 +3,9 @@
 .terminal {
   font-family: 'Courier New', Courier, monospace;
   border: 2px solid;
-  border-radius: 5px;
+  border-radius: 1rem;
   padding: 20px;
-  width: 600px;
+  width: 80vw;
   height: 80vh;
   margin: 20px auto;
   overflow-y: auto; /* Add scrolling for content overflow */
@@ -42,6 +42,14 @@
   padding: 5px; /* Add some padding if needed */
 }
 
+
+pre {
+  white-space: pre-wrap;
+  /* Allows wrapping */
+  word-wrap: break-word;
+  /* Breaks long words */
+}
+
 .terminal-body pre {
   margin: 0; /* Remove default margins */
   white-space: pre-wrap; /* Preserve whitespace and allow wrapping */
@@ -68,3 +76,4 @@
     font-size: 15px;
   }
 }
+

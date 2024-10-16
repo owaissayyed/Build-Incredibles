@@ -100,61 +100,40 @@ const Services = () => {
     }
   }, []);
 
+  const iconsArray = [
+    { icon: <FaHtml5 className="text-red-600" size={60} />, bg: 'bg-red-100' },
+    { icon: <FaCss3Alt className="text-blue-600" size={60} />, bg: 'bg-blue-100' },
+    { icon: <FaSass className="text-red-400" size={60} />, bg: 'bg-red-200' },
+    { icon: <FaJsSquare className="text-yellow-600" size={60} />, bg: 'bg-yellow-100' },
+    { icon: <FaReact className="text-blue-400" size={60} />, bg: 'bg-blue-200' },
+    { icon: <FaNodeJs className="text-green-600" size={60} />, bg: 'bg-green-100' },
+    { icon: <SiMongodb className="text-green-600" size={60} />, bg: 'bg-green-100' },
+    { icon: <FaNpm className="text-red-200" size={60} />, bg: 'bg-red-500' },
+    { icon: <FaWordpressSimple className="text-blue-700" size={60} />, bg: 'bg-blue-300' },
+    { icon: <FaPython className="text-blue-500" size={60} />, bg: 'bg-blue-200' }
+  ]
+
   return (
     // <div 
     //   ref={servicesRef} 
     //   className="min-h-screen overflow-hidden p-4"  
     //   style={{ overflowY: 'auto', height: '100vh' }}
     // >
-    <section className={`h-screen  snap-start p-4 overflow-auto`}>
+    <section className={`h-screen snap-start px-4 py-12 overflow-auto`}>
       {/* Icons Section */}
-      <motion.div
-        className="flex justify-around items-center p-4 mt-7"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        {[
-          { icon: <FaHtml5 className="text-red-600" size={60} />, bg: 'bg-red-100' },
-          { icon: <FaCss3Alt className="text-blue-600" size={60} />, bg: 'bg-blue-100' },
-          { icon: <FaSass className="text-red-400" size={60} />, bg: 'bg-red-200' },
-          { icon: <FaJsSquare className="text-yellow-600" size={60} />, bg: 'bg-yellow-100' },
-          { icon: <FaReact className="text-blue-400" size={60} />, bg: 'bg-blue-200' },
-        ].map(({ icon, bg }, index) => (
+      <h1 className="text-4xl font-bold text-center text-darkColor dark:text-lightColor mb-8">Services</h1>
+      <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5  overflow-auto h-3/4 py-4 px-12 sm:px-24 lg:px-36">
+        {iconsArray.map((item, index) => (
           <motion.div
             key={index}
-            className={`flex flex-col items-center transition-transform transform hover:scale-110 ${bg} p-2 rounded`}
+            className={`flex justify-center items-center transition-transform transform hover:scale-110 ${item.bg} px-6 py-4 rounded-lg `}
             whileHover={{ scale: 1.1 }}
             transition={{ type: 'spring', stiffness: 300 }}
           >
-            {icon}
+            {item.icon}
           </motion.div>
         ))}
-      </motion.div>
-
-      <motion.div
-        className="flex justify-around items-center p-4 mt-7"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        {[
-          { icon: <FaNodeJs className="text-green-600" size={60} />, bg: 'bg-green-100' },
-          { icon: <SiMongodb className="text-green-600" size={60} />, bg: 'bg-green-100' },
-          { icon: <FaNpm className="text-red-200" size={60} />, bg: 'bg-red-500' },
-          { icon: <FaWordpressSimple className="text-blue-700" size={60} />, bg: 'bg-blue-300' },
-          { icon: <FaPython className="text-blue-500" size={60} />, bg: 'bg-blue-200' },
-        ].map(({ icon, bg }, index) => (
-          <motion.div
-            key={index}
-            className={`flex flex-col items-center transition-transform transform hover:scale-110 ${bg} p-2 rounded`}
-            whileHover={{ scale: 1.1 }}
-            transition={{ type: 'spring', stiffness: 300 }}
-          >
-            {icon}
-          </motion.div>
-        ))}
-      </motion.div>
+      </div>
 
       {/* Service Cards Section */}
       {/* <div className="flex flex-col items-center mt-10 relative">

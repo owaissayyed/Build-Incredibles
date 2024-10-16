@@ -6,7 +6,7 @@ import { useTheme } from '../../themeContext';
 import { useInView } from 'react-intersection-observer';
 
 
-const Terminal = ({ terminalString, currentTextIndex }) => {
+const Terminal = ({ terminalString, currentTextIndex, setCurrentTextIndex }) => {
   const { theme } = useTheme(); // Access current theme
   return (
     <motion.div
@@ -19,7 +19,7 @@ const Terminal = ({ terminalString, currentTextIndex }) => {
         <span className="dot red"></span>
         <span className="dot yellow"></span>
         <span className="dot green"></span>
-        <span className="title">Build_Incredibles.sh</span>
+        <span className="title ml-1">Build_Incredibles.sh</span>
       </div>
       <div className="terminal-body  text-lightColor">
         {terminalString.map((text, i) => {
@@ -34,7 +34,7 @@ const Terminal = ({ terminalString, currentTextIndex }) => {
                     cursor={currentTextIndex > i ? false : true}
                     cursorStyle="_"
                     typeSpeed={10}
-                    delaySpeed={3000}
+                    delaySpeed={1000}
                     onComplete={() => setCurrentTextIndex(prevIndex => prevIndex + 1)}
                   />
                 </pre>
@@ -92,6 +92,7 @@ const Information = () => {
         <Terminal
           currentTextIndex={currentTextIndex}
           terminalString={terminalString}
+          setCurrentTextIndex={setCurrentTextIndex}
         />
         : <></>}
     </section>

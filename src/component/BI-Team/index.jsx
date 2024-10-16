@@ -1,7 +1,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { FaFacebookF, FaTwitter, FaLinkedinIn, FaGithub } from 'react-icons/fa'; // Importing GitHub icon
-import './Team.css'; 
+import './team.css';
 
 const teamMembers = [
   {
@@ -158,14 +158,14 @@ const TeamComponent = () => {
     //   className="py-12"  
     //   style={{ overflowY: 'auto', height: '100vh' }}
     // >
-    <section className={`h-screen py-12  snap-start`}>
-
-      <div className="flex flex-wrap justify-center">
+    <section className={`h-screen py-12  snap-start px-4`}>
+      <h1 className="text-4xl font-bold text-center text-darkColor dark:text-lightColor mb-8">Meet Our Team</h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12 justify-center w-full h-3/4 py-4 px-12 sm:px-24 lg:px-36 overflow-auto">
         {teamMembers.map((member, index) => (
-          <div 
-            key={index} 
-            className="card-container" 
-            onMouseEnter={() => handleMouseEnter(index)} 
+          <div
+            key={index}
+            className="card-container"
+            onMouseEnter={() => handleMouseEnter(index)}
             onMouseLeave={handleMouseLeave}
           >
             <div className={`card ${flippedIndex === index ? 'flipped' : ''}`}>
@@ -180,7 +180,7 @@ const TeamComponent = () => {
               </div>
               <div className="card-back bg-gray-500">
                 <p className="description text-lightColor">{member.description}</p>
-                <div className="social-links">
+                <div className="social-links flex justify-center items-center gap-2">
                   <a href={member.socialLinks.facebook} target="_blank" rel="noopener noreferrer">
                     <FaFacebookF />
                   </a>

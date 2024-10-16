@@ -13,6 +13,7 @@ import { AiOutlineSun, AiOutlineMoon } from 'react-icons/ai';
 import { motion } from 'framer-motion';
 import Timeline from './component/Timeline/Timeline';
 import { AiOutlineArrowDown } from 'react-icons/ai';
+import "./App.css"
 
 
 
@@ -43,10 +44,12 @@ const App = () => {
     const [visibleSection, setVisibleSection] = useState(0);
     const [isVisible, setIsVisible] = useState(true);
     const { toggleTheme, theme } = useTheme();
+    const component1Ref = useRef(null);
 
-    const iconVariants = {
+
+    const buttonVariants = {
         float: {
-            y: [0, -10, 0],
+            y: [0, -15, 10],
             transition: {
                 duration: 2,
                 ease: "easeInOut",
@@ -55,31 +58,38 @@ const App = () => {
         }
     };
 
+    const scrollToInfo = () => {
+        component1Ref.current.scrollIntoView({ behavior: 'smooth' });
+    };
+
     return (
         <div className="snap-y snap-mandatory h-screen overflow-y-scroll "
-            onScroll={() => { setIsVisible(false) }}
         >
-            {isVisible ?
-                <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2">
-                    <motion.button
-                        // onClick={onScroll}
-                        className="border-4 border-darkColor dark:border-lightColor rounded-full p-3 cursor-pointer flex justify-center items-center"
-                        variants={iconVariants}
-                        animate="float"
-                    >
-                        <AiOutlineArrowDown className="text-3xl text-darkColor dark:text-lightColor" />
-                    </motion.button>
-                </div>
-                : <></>
-            }
+
             <ParticlesBackground />
             <Header />
-            <Typewriter />
-            <Information />
+            <Typewriter scrollToInfo={scrollToInfo} />
+            <div ref={component1Ref}>
+                <Information />
+            </div>
             <Team />
             <Services />
             <Timeline />
             <Meet />
+            <div className="fixed bottom-5 right-5">
+                <motion.button
+                    onClick={toggleTheme}
+                    className="p-3 rounded-full shadow-lg border-2 border-darkColor dark:border-lightColor bg-lightGray dark:bg-darkGray transition duration-300"
+                    variants={buttonVariants}
+                    animate="float"
+                >
+                    {theme === 'dark' ? (
+                        <AiOutlineSun className="text-lightColor" />
+                    ) : (
+                        <AiOutlineMoon className="text-darkColor" />
+                    )}
+                </motion.button>
+            </div>
         </div >
     );
 };
