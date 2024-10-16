@@ -5,13 +5,15 @@ import { AiOutlineArrowDown } from 'react-icons/ai';
 import { useTheme } from '../../themeContext';
 import { useInView } from 'react-intersection-observer';
 
-const Information = ({ onScroll }) => {
+const Information = ({ scrollToInfo }) => {
     const { toggleTheme } = useTheme();
     const [showContent, setShowContent] = useState(false);
     const { ref, inView } = useInView({
         triggerOnce: true,
         threshold: 0.5,
     });
+    const [isVisible, setIsVisible] = useState(true);
+
 
     const textVariants = {
         hidden: { opacity: 0, scale: 0.8 },
@@ -38,10 +40,11 @@ const Information = ({ onScroll }) => {
     return (
         <section
             ref={ref}
-            className={`h-screen flex justify-center items-center snap-start`}
+            className={`relative h-screen flex justify-center items-center snap-start`}
+        // onScroll={() => { setIsVisible(false) }}
         >
             <motion.div
-                className='text-7xl font-bold neon-text text-darkColor dark:text-lightColor'
+                className='text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold neon-text text-darkColor dark:text-lightColor'
                 variants={textVariants}
                 initial="hidden"
                 animate={showContent ? "visible" : "hidden"}
@@ -55,16 +58,19 @@ const Information = ({ onScroll }) => {
                 )}
             </motion.div>
 
-            {/* <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2">
-                <motion.button
-                    onClick={onScroll}
-                    className="border-4 border-darkColor dark:border-lightColor rounded-full p-3 cursor-pointer flex justify-center items-center"
-                    variants={iconVariants}
-                    animate="float"
-                >
-                    <AiOutlineArrowDown className="text-3xl text-darkColor dark:text-lightColor" />
-                </motion.button>
-            </div> */}
+            {isVisible ?
+                <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2">
+                    <motion.button
+                        onClick={scrollToInfo}
+                        className="border-4 border-darkColor dark:border-lightColor rounded-full p-3 cursor-pointer flex justify-center items-center"
+                        variants={iconVariants}
+                        animate="float"
+                    >
+                        <AiOutlineArrowDown className="text-3xl text-darkColor dark:text-lightColor" />
+                    </motion.button>
+                </div>
+                : <></>
+            }
         </section>
     );
 };

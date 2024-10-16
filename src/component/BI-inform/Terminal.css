@@ -2,10 +2,10 @@
 
 .terminal {
   font-family: 'Courier New', Courier, monospace;
-  border: 2px solid ;
-  border-radius: 5px;
+  border: 2px solid;
+  border-radius: 1rem;
   padding: 20px;
-  width: 600px;
+  width: 80vw;
   height: 80vh;
   margin: 20px auto;
   /* box-shadow: 0 0 10px #fff; */
@@ -15,7 +15,7 @@
   display: flex;
   align-items: center;
   margin-bottom: 10px;
-  border-bottom: 1px solid ;
+  border-bottom: 1px solid;
 }
 
 .dot {
@@ -43,6 +43,8 @@
 }
 
 pre {
-  white-space: pre-wrap; /* Allows wrapping */
-  word-wrap: break-word; /* Breaks long words */
+  white-space: pre-wrap;
+  /* Allows wrapping */
+  word-wrap: break-word;
+  /* Breaks long words */
 }

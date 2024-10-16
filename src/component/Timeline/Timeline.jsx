@@ -5,9 +5,9 @@ import 'react-vertical-timeline-component/style.min.css';
 
 export default function Timeline() {
     return (
-        <section className={`h-screen max-h-screen snap-start pt-12 overflow-auto`}>
+        <section className={`h-screen max-h-screen snap-start pt-12 overflow-auto px-4`}>
             <h2 className="text-3xl font-bold text-center mb-8 text-darkColor dark:text-lightColor">Our Story</h2>
-            <div className='h-3/4 overflow-auto p-4'>
+            <div className='h-3/4 overflow-auto py-4 px-12 sm:px-24 lg:px-36'>
                 <VerticalTimeline>
                     <VerticalTimelineElement
                         className="vertical-timeline-element--work"
@@ -21,6 +21,18 @@ export default function Timeline() {
                         <h4 className="vertical-timeline-element-subtitle">Miami, FL</h4>
                         <p>
                             Creative Direction, User Experience, Visual Design, Project Management, Team Leading
+                        </p>
+                    </VerticalTimelineElement>
+                    <VerticalTimelineElement
+                        className="vertical-timeline-element--work"
+                        date="2010 - 2011"
+                        iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
+                        icon={<IoCodeWorking />}
+                    >
+                        <h3 className="vertical-timeline-element-title">Art Director</h3>
+                        <h4 className="vertical-timeline-element-subtitle">San Francisco, CA</h4>
+                        <p>
+                            Creative Direction, User Experience, Visual Design, SEO, Online Marketing
                         </p>
                     </VerticalTimelineElement>
                     <VerticalTimelineElement
