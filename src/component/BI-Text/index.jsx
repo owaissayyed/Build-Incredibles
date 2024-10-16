@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { AiOutlineArrowDown } from 'react-icons/ai';
 import { useTheme } from '../../themeContext';
 import { useInView } from 'react-intersection-observer';
+import './text.css'; 
 
 const Information = ({ onScroll }) => {
     const { toggleTheme } = useTheme();
@@ -41,7 +42,7 @@ const Information = ({ onScroll }) => {
             className={`h-screen flex justify-center items-center snap-start`}
         >
             <motion.div
-                className='text-7xl font-bold neon-text text-darkColor dark:text-lightColor'
+                className='text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold neon-text text-darkColor dark:text-lightColor'
                 variants={textVariants}
                 initial="hidden"
                 animate={showContent ? "visible" : "hidden"}
@@ -62,7 +63,7 @@ const Information = ({ onScroll }) => {
                     variants={iconVariants}
                     animate="float"
                 >
-                    <AiOutlineArrowDown className="text-3xl text-darkColor dark:text-lightColor" />
+                    <AiOutlineArrowDown className="text-2xl sm:text-3xl text-darkColor dark:text-lightColor" />
                 </motion.button>
             </div> */}
         </section>

@@ -17,4 +17,35 @@
   .animate-marquee-right {
     animation: marquee-right 10s linear infinite;
   }
-  
+  .service-line {
+    display: none; /* Hide the line */
+  }
+
+/* Hide vertical line on screens smaller than 1000px */
+/* Media query to hide the line on screens smaller than 1000px */
+@media (max-width: 1000px) {
+  .service-line {
+    display: none; /* Hide the line */
+  }
+
+  .service-cards {
+    z-index: 1; /* Cards should be above the line */
+  }
+}
+
+/* Styles for larger screens */
+.service-line {
+  z-index: -1; /* Ensure the line is behind the cards */
+}
+
+/* Ensure service cards stack on smaller screens */
+@media (max-width: 768px) {
+  .flex-wrap {
+    flex-direction: column; /* Stack cards vertically */
+    align-items: center; /* Center align items */
+  }
+
+  .service-card {
+    width: 90%; /* Adjust width on small screens */
+  }
+}

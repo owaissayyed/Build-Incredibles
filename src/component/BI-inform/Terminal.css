@@ -2,20 +2,20 @@
 
 .terminal {
   font-family: 'Courier New', Courier, monospace;
-  border: 2px solid ;
+  border: 2px solid;
   border-radius: 5px;
   padding: 20px;
   width: 600px;
   height: 80vh;
   margin: 20px auto;
-  /* box-shadow: 0 0 10px #fff; */
+  overflow-y: auto; /* Add scrolling for content overflow */
 }
 
 .terminal-header {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
-  border-bottom: 1px solid ;
+  border-bottom: 1px solid;
 }
 
 .dot {
@@ -38,11 +38,33 @@
 }
 
 .terminal-body {
-  overflow-y: auto;
-  max-height: 400px;
+  text-align: left; /* Align text to the left */
+  padding: 5px; /* Add some padding if needed */
 }
 
-pre {
-  white-space: pre-wrap; /* Allows wrapping */
-  word-wrap: break-word; /* Breaks long words */
+.terminal-body pre {
+  margin: 0; /* Remove default margins */
+  white-space: pre-wrap; /* Preserve whitespace and allow wrapping */
+  word-wrap: break-word; /* Break long words */
+  font-size: 0.9em; /* Adjust font size for mobile */
+}
+
+/* Responsive font size adjustments */
+@media (max-width: 640px) {
+  .terminal-body pre {
+    font-size: 0.8em; /* Smaller font size for mobile */
+  }
+
+
+  .terminal {
+    padding: 8px;
+    width: 280px;
+    height: 60vh;
+    margin: 1px ;
+  }
+  .terminal-header {
+    margin-bottom: 5px;
+    border-bottom: 1px solid;
+    font-size: 15px;
+  }
 }

@@ -64,7 +64,7 @@ const services = [
 
 const ServiceCard = ({ title, description, icons, isLeft }) => (
   <motion.div
-    className={`max-w-md h-48 rounded-lg border-2 border-darkColor dark:border-lightColor bg-thirdprimary text-lightColor p-6 m-4 flex flex-col justify-between items-center text-center transition-transform transform hover:scale-110 hover:shadow-2xl hover:shadow-blue-500 ease-in-out relative overflow-hidden ${isLeft ? 'mr-auto' : 'ml-auto'}`}
+    className={`service-cards max-w-md h-48 rounded-lg border-2 border-darkColor dark:border-lightColor bg-thirdprimary text-lightColor p-6 m-4 flex flex-col justify-between items-center text-center transition-transform transform hover:scale-110 hover:shadow-2xl hover:shadow-blue-500 ease-in-out relative overflow-hidden ${isLeft ? 'mr-auto' : 'ml-auto'}`}
     initial={{ opacity: 0, x: isLeft ? -50 : 50 }}
     animate={{ opacity: 1, x: 0 }}
     transition={{ duration: 0.5 }}
@@ -169,7 +169,7 @@ const Services = () => {
                 isLeft={index % 2 !== 0}
               />
               {index < services.length - 1 && (
-                <div className="absolute h-1 w-12 bg-darkGray dark:bg-lightGray left-1/2 transform -translate-x-1/2 top-24"></div>
+                <div className="max-lg:hidden absolute h-1 w-12 bg-darkGray dark:bg-lightGray left-1/2 transform -translate-x-1/2 top-24"></div>
               )}
             </div>
           ))}

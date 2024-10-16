@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Typewriter } from "react-simple-typewriter";
 import { useTheme } from '../../themeContext'; // Adjust the path based on your file structure
 
 const Header = () => {
