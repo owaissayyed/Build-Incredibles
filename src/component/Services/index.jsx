@@ -64,7 +64,7 @@ const services = [
 
 const ServiceCard = ({ title, description, icons, isLeft }) => (
   <motion.div
-    className={`max-w-md h-48 rounded-lg border-2 border-darkColor dark:border-lightColor bg-thirdprimary text-lightColor p-6 m-4 flex flex-col justify-between items-center text-center transition-transform transform hover:scale-110 hover:shadow-2xl hover:shadow-blue-500 ease-in-out relative overflow-hidden ${isLeft ? 'mr-auto' : 'ml-auto'}`}
+    className={`service-cards max-w-md h-48 rounded-lg border-2 border-darkColor dark:border-lightColor bg-thirdprimary text-lightColor p-6 m-4 flex flex-col justify-between items-center text-center transition-transform transform hover:scale-110 hover:shadow-2xl hover:shadow-blue-500 ease-in-out relative overflow-hidden ${isLeft ? 'mr-auto' : 'ml-auto'}`}
     initial={{ opacity: 0, x: isLeft ? -50 : 50 }}
     animate={{ opacity: 1, x: 0 }}
     transition={{ duration: 0.5 }}
@@ -103,7 +103,7 @@ const Services = () => {
   return (
     <div 
       ref={servicesRef} 
-      className="min-h-screen overflow-hidden p-4"  
+      className=""  
       style={{ overflowY: 'auto', height: '100vh' }}
     >
       {/* Icons Section */}
@@ -155,9 +155,9 @@ const Services = () => {
         ))}
       </motion.div>
 
-      {/* Service Cards Section */}
-      <div className="flex flex-col items-center mt-10 relative">
-        <div className="absolute left-1/2 transform -translate-x-1/2 h-full border-l-2 border-darkGray dark:border-lightGray"></div>
+ {/* Service Cards Section */}
+ <div className="flex flex-col items-center mt-10 relative">
+        <div className="service-line absolute left-1/2 transform -translate-x-1/2 h-full border-l-2 border-darkGray dark:border-lightGray"></div>
         <div className="flex flex-wrap justify-center">
           {services.map((service, index) => (
             <div key={index} className={`w-full flex justify-${index % 2 === 0 ? 'end' : 'start'} p-4 relative`}>
@@ -168,12 +168,12 @@ const Services = () => {
                 isLeft={index % 2 !== 0}
               />
               {index < services.length - 1 && (
-                <div className="absolute h-1 w-12 bg-darkGray dark:bg-lightGray left-1/2 transform -translate-x-1/2 top-24"></div>
+                <div className="max-lg:hidden absolute h-1 w-12 bg-darkGray dark:bg-lightGray left-1/2 transform -translate-x-1/2 top-24"></div>
               )}
             </div>
           ))}
         </div>
-        <div className="absolute h-full border-l-2 border-darkGray dark:border-lightGray left-1/2 transform -translate-x-1/2 top-0"></div>
+        <div className="service-line h-full border-l-2 border-darkGray dark:border-lightGray left-1/2 transform -translate-x-1/2 top-0"></div>
       </div>
     </div>
   );

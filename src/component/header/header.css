@@ -1,0 +1,56 @@
+/* Base styles */
+.h-lvh {
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.w-90 {
+    width: 90%;
+    max-width: 1200px; /* Limit the maximum width */
+    margin: 0 auto; /* Center horizontally */
+}
+
+.text-darkColor {
+    color: #333; /* Example dark color */
+}
+
+.dark .text-lightColor {
+    color: #f9f9f9; /* Example light color for dark mode */
+}
+
+.text-secondprimary {
+    color: #007bff; /* Example secondary color */
+}
+
+.dark .text-primary {
+    color: #ffbb33; /* Example primary color for dark mode */
+}
+
+.font-bold {
+    font-weight: bold;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .text-5xl {
+        font-size: 2.5rem; /* Reduce font size for smaller screens */
+    }
+
+    .w-90 {
+        width: 95%; /* Increase width on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .text-5xl {
+        font-size: 2rem; /* Further reduce font size */
+    }
+
+    .mt-2 {
+        margin-top: 1rem; /* Adjust margin for smaller screens */
+    }
+}
