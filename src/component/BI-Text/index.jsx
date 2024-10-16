@@ -55,7 +55,7 @@ const Information = ({ onScroll }) => {
                 )}
             </motion.div>
 
-            <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2">
+            {/* <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2">
                 <motion.button
                     onClick={onScroll}
                     className="border-4 border-darkColor dark:border-lightColor rounded-full p-3 cursor-pointer flex justify-center items-center"
@@ -64,7 +64,7 @@ const Information = ({ onScroll }) => {
                 >
                     <AiOutlineArrowDown className="text-3xl text-darkColor dark:text-lightColor" />
                 </motion.button>
-            </div>
+            </div> */}
         </section>
     );
 };

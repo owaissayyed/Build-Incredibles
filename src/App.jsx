@@ -12,6 +12,8 @@ import { ThemeProvider, useTheme } from './themeContext';
 import { AiOutlineSun, AiOutlineMoon } from 'react-icons/ai';
 import { motion } from 'framer-motion';
 import Timeline from './component/Timeline/Timeline';
+import { AiOutlineArrowDown } from 'react-icons/ai';
+
 
 
 const Section = ({ title, children, bgColor }) => {
@@ -39,46 +41,12 @@ const sections = [
 const App = () => {
     const sectionRefs = useRef([]);
     const [visibleSection, setVisibleSection] = useState(0);
+    const [isVisible, setIsVisible] = useState(true);
     const { toggleTheme, theme } = useTheme();
 
-    const handleScroll = (event) => {
-        event.preventDefault();
-        const currentIndex = sectionRefs.current.findIndex(ref => ref && ref.getBoundingClientRect().top >= 0);
-
-        if (event.deltaY > 0) {
-            const nextIndex = currentIndex + 1;
-            if (nextIndex < sectionRefs.current.length) {
-                sectionRefs.current[nextIndex].scrollIntoView({ behavior: 'smooth' });
-                setVisibleSection(nextIndex);
-            }
-        } else {
-            const prevIndex = currentIndex - 1;
-            if (prevIndex >= 0) {
-                sectionRefs.current[prevIndex].scrollIntoView({ behavior: 'smooth' });
-                setVisibleSection(prevIndex);
-            }
-        }
-    };
-
-    const scrollToNextSection = () => {
-        const nextIndex = visibleSection + 1;
-        if (nextIndex < sectionRefs.current.length) {
-            sectionRefs.current[nextIndex].scrollIntoView({ behavior: 'smooth' });
-            setVisibleSection(nextIndex);
-        }
-        console.log('Scrolling to section:', nextIndex);
-    };
-
-    // useEffect(() => {
-    //     window.addEventListener('wheel', handleScroll, { passive: false });
-    //     return () => {
-    //         window.removeEventListener('wheel', handleScroll);
-    //     };
-    // }, []);
-
-    const buttonVariants = {
+    const iconVariants = {
         float: {
-            y: [0, -15, 10],
+            y: [0, -10, 0],
             transition: {
                 duration: 2,
                 ease: "easeInOut",
@@ -88,7 +56,22 @@ const App = () => {
     };
 
     return (
-        <div className="snap-y snap-mandatory h-screen overflow-y-scroll ">
+        <div className="snap-y snap-mandatory h-screen overflow-y-scroll "
+            onScroll={() => { setIsVisible(false) }}
+        >
+            {isVisible ?
+                <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2">
+                    <motion.button
+                        // onClick={onScroll}
+                        className="border-4 border-darkColor dark:border-lightColor rounded-full p-3 cursor-pointer flex justify-center items-center"
+                        variants={iconVariants}
+                        animate="float"
+                    >
+                        <AiOutlineArrowDown className="text-3xl text-darkColor dark:text-lightColor" />
+                    </motion.button>
+                </div>
+                : <></>
+            }
             <ParticlesBackground />
             <Header />
             <Typewriter />
