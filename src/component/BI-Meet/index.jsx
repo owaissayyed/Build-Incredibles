@@ -1,4 +1,3 @@
-// Meet.jsx
 import React, { useState } from 'react';
 import Popup from '../../Popup';
 import { motion } from 'framer-motion';
@@ -26,7 +25,6 @@ const Meet = () => {
     };
 
     return (
-        // <div className='h-lvh flex justify-center items-center text-center'>
         <section className={`h-screen flex justify-center items-center text-center  snap-start p-4 overflow-auto`}>
             <div className='w-90'>
                 <motion.h1
@@ -55,7 +53,6 @@ const Meet = () => {
                 >
                     Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                 </motion.p>
-
                 {/* Button */}
                 <motion.button
                     className='mt-10 px-4 py-2 bg-blue-600 text-darkColor dark:text-lightColor font-semibold rounded-lg transform transition-transform duration-200 hover:scale-105 hover:bg-blue-500'

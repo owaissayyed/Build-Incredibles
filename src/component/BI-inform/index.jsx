@@ -15,7 +15,7 @@ const Terminal = ({ terminalString, currentTextIndex, setCurrentTextIndex }) => 
       animate={{ rotateY: 0, opacity: 1 }}
       transition={{ duration: 0.3, ease: 'easeInOut' }}
     >
-      <div className="terminal-header :border-lightColor  text-lightColor">
+      <div className="terminal-header text-lightColor">
         <span className="dot red"></span>
         <span className="dot yellow"></span>
         <span className="dot green"></span>

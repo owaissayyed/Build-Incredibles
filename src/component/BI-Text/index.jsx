@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { AiOutlineArrowDown } from 'react-icons/ai';
 import { useTheme } from '../../themeContext';
 import { useInView } from 'react-intersection-observer';
+import './text.css'; 
 
 const Information = ({ scrollToInfo }) => {
     const { toggleTheme } = useTheme();
