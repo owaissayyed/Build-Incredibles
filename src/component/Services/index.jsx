@@ -101,11 +101,12 @@ const Services = () => {
   }, []);
 
   return (
-    <div 
-      ref={servicesRef} 
-      className=""  
-      style={{ overflowY: 'auto', height: '100vh' }}
-    >
+    // <div 
+    //   ref={servicesRef} 
+    //   className="min-h-screen overflow-hidden p-4"  
+    //   style={{ overflowY: 'auto', height: '100vh' }}
+    // >
+    <section className={`h-screen  snap-start p-4 overflow-auto`}>
       {/* Icons Section */}
       <motion.div
         className="flex justify-around items-center p-4 mt-7"
@@ -155,9 +156,9 @@ const Services = () => {
         ))}
       </motion.div>
 
- {/* Service Cards Section */}
- <div className="flex flex-col items-center mt-10 relative">
-        <div className="service-line absolute left-1/2 transform -translate-x-1/2 h-full border-l-2 border-darkGray dark:border-lightGray"></div>
+      {/* Service Cards Section */}
+      {/* <div className="flex flex-col items-center mt-10 relative">
+        <div className="absolute left-1/2 transform -translate-x-1/2 h-full border-l-2 border-darkGray dark:border-lightGray"></div>
         <div className="flex flex-wrap justify-center">
           {services.map((service, index) => (
             <div key={index} className={`w-full flex justify-${index % 2 === 0 ? 'end' : 'start'} p-4 relative`}>
@@ -173,9 +174,9 @@ const Services = () => {
             </div>
           ))}
         </div>
-        <div className="service-line h-full border-l-2 border-darkGray dark:border-lightGray left-1/2 transform -translate-x-1/2 top-0"></div>
-      </div>
-    </div>
+        <div className="absolute h-full border-l-2 border-darkGray dark:border-lightGray left-1/2 transform -translate-x-1/2 top-0"></div>
+      </div> */}
+    </section>
   );
 };
 

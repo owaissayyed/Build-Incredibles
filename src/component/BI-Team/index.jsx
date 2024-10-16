@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef, useState } from 'react';
 import { FaFacebookF, FaTwitter, FaLinkedinIn, FaGithub } from 'react-icons/fa'; // Importing GitHub icon
 import './Team.css'; 
@@ -152,12 +153,12 @@ const TeamComponent = () => {
   };
 
   return (
-    <div 
-      ref={teamRef} 
-      className="py-12"  
-      style={{ overflowY: 'auto', height: '100vh'}}
-    >
-      <h2 className="text-3xl font-bold text-center mb-8 text-darkColor dark:text-lightColor">Meet Our Team</h2>
+    // <div 
+    //   ref={teamRef} 
+    //   className="py-12"  
+    //   style={{ overflowY: 'auto', height: '100vh' }}
+    // >
+    <section className={`h-screen py-12  snap-start`}>
 
       <div className="flex flex-wrap justify-center">
         {teamMembers.map((member, index) => (
@@ -198,7 +199,7 @@ const TeamComponent = () => {
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 

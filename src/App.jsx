@@ -8,9 +8,26 @@ import Meet from './component/BI-Meet';
 import Team from './component/BI-Team';
 import ParticlesBackground from './particalbackground';
 import MotionSection from './Motion';
-import { ThemeProvider, useTheme } from './themeContext'; 
+import { ThemeProvider, useTheme } from './themeContext';
 import { AiOutlineSun, AiOutlineMoon } from 'react-icons/ai';
 import { motion } from 'framer-motion';
+import Timeline from './component/Timeline/Timeline';
+import { AiOutlineArrowDown } from 'react-icons/ai';
+
+
+
+const Section = ({ title, children, bgColor }) => {
+    return (
+        <section className={`h-screen flex justify-center items-center ${bgColor} snap-start`}>
+            <div className="text-center p-4">
+                <h1 className="text-3xl font-bold mb-4">{title}</h1>
+                <div className="max-w-md mx-auto">
+                    {children}
+                </div>
+            </div>
+        </section>
+    );
+};
 
 const sections = [
     { component: <Header /> },
@@ -24,46 +41,12 @@ const sections = [
 const App = () => {
     const sectionRefs = useRef([]);
     const [visibleSection, setVisibleSection] = useState(0);
+    const [isVisible, setIsVisible] = useState(true);
     const { toggleTheme, theme } = useTheme();
 
-    const handleScroll = (event) => {
-        event.preventDefault();
-        const currentIndex = sectionRefs.current.findIndex(ref => ref && ref.getBoundingClientRect().top >= 0);
-
-        if (event.deltaY > 0) {
-            const nextIndex = currentIndex + 1;
-            if (nextIndex < sectionRefs.current.length) {
-                sectionRefs.current[nextIndex].scrollIntoView({ behavior: 'smooth' });
-                setVisibleSection(nextIndex);
-            }
-        } else {
-            const prevIndex = currentIndex - 1;
-            if (prevIndex >= 0) {
-                sectionRefs.current[prevIndex].scrollIntoView({ behavior: 'smooth' });
-                setVisibleSection(prevIndex);
-            }
-        }
-    };
-
-    const scrollToNextSection = () => {
-        const nextIndex = visibleSection + 1;
-        if (nextIndex < sectionRefs.current.length) {
-            sectionRefs.current[nextIndex].scrollIntoView({ behavior: 'smooth' });
-            setVisibleSection(nextIndex);
-        }
-        console.log('Scrolling to section:', nextIndex); 
-    };
-
-    useEffect(() => {
-        window.addEventListener('wheel', handleScroll, { passive: false });
-        return () => {
-            window.removeEventListener('wheel', handleScroll);
-        };
-    }, []);
-
-    const buttonVariants = {
+    const iconVariants = {
         float: {
-            y: [0, -15, 10], 
+            y: [0, -10, 0],
             transition: {
                 duration: 2,
                 ease: "easeInOut",
@@ -73,43 +56,31 @@ const App = () => {
     };
 
     return (
-        <>
-            <ParticlesBackground />
-            <div>
-                {sections.map((section, index) => (
-                    <div
-                        key={index}
-                        ref={el => (sectionRefs.current[index] = el)}
-                        className="h-screen"
+        <div className="snap-y snap-mandatory h-screen overflow-y-scroll "
+            onScroll={() => { setIsVisible(false) }}
+        >
+            {isVisible ?
+                <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2">
+                    <motion.button
+                        // onClick={onScroll}
+                        className="border-4 border-darkColor dark:border-lightColor rounded-full p-3 cursor-pointer flex justify-center items-center"
+                        variants={iconVariants}
+                        animate="float"
                     >
-                        <MotionSection>
-                            {React.cloneElement(section.component, { 
-                                isVisible: visibleSection === index,
-                                onScroll: scrollToNextSection, 
-                                key: visibleSection 
-                            })} 
-                        </MotionSection>
-                    </div>
-                ))}
-
-                <div className="fixed bottom-5 right-5">
-    <motion.button 
-        onClick={toggleTheme} 
-        className="p-3 rounded-full shadow-lg border-2 border-darkColor dark:border-lightColor bg-lightGray dark:bg-darkGray transition duration-300"
-        variants={buttonVariants}
-        animate="float"
-    >
-        {theme === 'dark' ? (
-            <AiOutlineSun className="text-lightColor" />
-        ) : (
-            <AiOutlineMoon className="text-darkColor" />
-        )}
-    </motion.button>
-</div>
-
-
-            </div>
-        </>
+                        <AiOutlineArrowDown className="text-3xl text-darkColor dark:text-lightColor" />
+                    </motion.button>
+                </div>
+                : <></>
+            }
+            <ParticlesBackground />
+            <Header />
+            <Typewriter />
+            <Information />
+            <Team />
+            <Services />
+            <Timeline />
+            <Meet />
+        </div >
     );
 };
 
