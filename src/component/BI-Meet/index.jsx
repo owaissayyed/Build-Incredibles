@@ -25,10 +25,10 @@ const Meet = () => {
     };
 
     return (
-        <section className={`h-screen flex justify-center items-center text-center  snap-start p-4 overflow-auto`}>
-            <div className='w-90'>
+        <section className="h-screen flex justify-center items-center text-center snap-start p-4 overflow-auto">
+            <div className='w-90 flex flex-col items-center'>
                 <motion.h1
-                    className='text-2xl sm:text-4xl md:text-5xl   font-bold text-darkColor dark:text-lightColor'
+                    className='text-2xl sm:text-4xl md:text-5xl font-bold text-darkColor dark:text-lightColor'
                     initial="hidden"
                     animate="visible"
                     variants={textVariants}
@@ -53,20 +53,22 @@ const Meet = () => {
                 >
                     Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                 </motion.p>
-                {/* Button */}
-                <motion.button
-                    className='mt-10 px-4 py-2 bg-blue-600 text-darkColor dark:text-lightColor font-semibold rounded-lg transform transition-transform duration-200 hover:scale-105 hover:bg-blue-500'
-                    onClick={handleButtonClick}
-                    initial="hidden"
-                    animate="visible"
-                    variants={buttonVariants}
-                >
-                    Schedule your meet
-                </motion.button>
+                {/* Centering the button */}
+                <div className="flex justify-center mt-10">
+                    <motion.button
+                        className='px-4 py-2 bg-blue-600 text-darkColor dark:text-lightColor font-semibold rounded-lg transform transition-transform duration-200 hover:scale-105 hover:bg-blue-500'
+                        onClick={handleButtonClick}
+                        initial="hidden"
+                        animate="visible"
+                        variants={buttonVariants}
+                    >
+                        Schedule your meet
+                    </motion.button>
+                </div>
 
                 {isOpen && <Popup onClose={handleClose} />}
             </div>
-        </section >
+        </section>
     );
 };
 

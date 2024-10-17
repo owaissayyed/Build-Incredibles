@@ -1,13 +1,20 @@
 
 import React, { useEffect, useRef, useState } from 'react';
-import { FaFacebookF, FaTwitter, FaLinkedinIn, FaGithub } from 'react-icons/fa'; // Importing GitHub icon
+import { FaFacebookF, FaTwitter, FaLinkedinIn, FaGithub } from 'react-icons/fa'; 
 import './team.css';
+import Arhamphoto from './Team-img/Arham.jpg'
+import Yashphoto from './Team-img/Yash.jpeg'
+import Owaisphoto from './Team-img/Owais.jpeg'
+import Arsalanphoto from './Team-img/Arsalan.jpg'
+import Fardeenphoto from './Team-img/Fardeen.jpg'
+import afrahphoto from './Team-img/afrah.jpg'
+import Sufiyanphoto from './Team-img/Sufiyan.jpg'
 
 const teamMembers = [
   {
-    name: 'Person 1',
-    role: 'Project Manager',
-    image: 'https://via.placeholder.com/150',
+    name: 'Arham Sayyed',
+    role: 'Founder & Full Stack Developer',
+    image: Arhamphoto,
     description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
     socialLinks: {
       facebook: '#',
@@ -17,9 +24,9 @@ const teamMembers = [
     },
   },
   {
-    name: 'Person 2',
-    role: 'Developer',
-    image: 'https://via.placeholder.com/150',
+    name: 'Yash Chauhan',
+    role: 'Full Stack Developer',
+    image: Yashphoto,
     description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
     socialLinks: {
       facebook: '#',
@@ -29,10 +36,10 @@ const teamMembers = [
     },
   },
   {
-    name: 'Person 3',
-    role: 'Designer',
-    image: 'https://via.placeholder.com/150',
-    description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+    name: 'Owais Sayyed',
+    role: 'Frontend & API Developer',
+    image: Owaisphoto,
+    description: 'Owais Sayyed is a Frontend & API Developer dedicated to building responsive user interfaces and seamless API integrations. With a focus on modern web technologies,delivers efficient and high-quality solutions.',
     socialLinks: {
       facebook: '#',
       twitter: '#',
@@ -41,9 +48,9 @@ const teamMembers = [
     },
   },
   {
-    name: 'Person 4',
-    role: 'Project Manager',
-    image: 'https://via.placeholder.com/150',
+    name: 'Arsalan Mirza',
+    role: 'Security & Penetration Tester',
+    image: Arsalanphoto,
     description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
     socialLinks: {
       facebook: '#',
@@ -54,8 +61,8 @@ const teamMembers = [
   },
   {
     name: 'Person 5',
-    role: 'Developer',
-    image: 'https://via.placeholder.com/150',
+    role: 'Finance & Management',
+    image: Fardeenphoto,
     description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
     socialLinks: {
       facebook: '#',
@@ -67,7 +74,7 @@ const teamMembers = [
   {
     name: 'Person 6',
     role: 'Designer',
-    image: 'https://via.placeholder.com/150',
+    image: Sufiyanphoto,
     description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
     socialLinks: {
       facebook: '#',
@@ -78,44 +85,8 @@ const teamMembers = [
   },
   {
     name: 'Person 7',
-    role: 'Project Manager',
-    image: 'https://via.placeholder.com/150',
-    description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-    socialLinks: {
-      facebook: '#',
-      twitter: '#',
-      linkedin: '#',
-      github: '#',
-    },
-  },
-  {
-    name: 'Person 8',
-    role: 'Developer',
-    image: 'https://via.placeholder.com/150',
-    description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-    socialLinks: {
-      facebook: '#',
-      twitter: '#',
-      linkedin: '#',
-      github: '#',
-    },
-  },
-  {
-    name: 'Person 9',
-    role: 'Designer',
-    image: 'https://via.placeholder.com/150',
-    description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-    socialLinks: {
-      facebook: '#',
-      twitter: '#',
-      linkedin: '#',
-      github: '#',
-    },
-  },
-  {
-    name: 'Person 10',
-    role: 'Designer',
-    image: 'https://via.placeholder.com/150',
+    role: 'Content Writer',
+    image: afrahphoto,
     description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
     socialLinks: {
       facebook: '#',
