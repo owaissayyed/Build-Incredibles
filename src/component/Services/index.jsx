@@ -3,85 +3,6 @@ import { FaHtml5, FaCss3Alt, FaJsSquare, FaReact, FaSass, FaNodeJs, FaNpm, FaWor
 import { SiMongodb } from "react-icons/si";
 import { motion } from 'framer-motion';
 
-// Mapping of service titles to their respective arrays of icons
-const icons = {
-  'Website Design': [
-    <FaHtml5 className="animate-bounce" size={30} />,
-    <FaCss3Alt className="animate-bounce" size={30} />,
-    <FaReact className="animate-bounce" size={30} />,
-  ],
-  'Mobile Applications': [
-    <FaJsSquare className="animate-bounce" size={30} />,
-    <FaReact className="animate-bounce" size={30} />,
-    <FaNodeJs className="animate-bounce" size={30} />,
-  ],
-  'Web Applications': [
-    <FaReact className="animate-bounce" size={30} />,
-    <FaNodeJs className="animate-bounce" size={30} />,
-    <SiMongodb className="animate-bounce" size={30} />,
-  ],
-  'E-commerce Websites': [
-    <FaSass className="animate-bounce" size={30} />,
-    <FaHtml5 className="animate-bounce" size={30} />,
-    <FaCss3Alt className="animate-bounce" size={30} />,
-  ],
-  'Database Management': [
-    <SiMongodb className="animate-bounce" size={30} />,
-    <FaNodeJs className="animate-bounce" size={30} />,
-  ],
-  'API Development': [
-    <FaNodeJs className="animate-bounce" size={30} />,
-    <FaNpm className="animate-bounce" size={30} />,
-    <FaReact className="animate-bounce" size={30} />,
-  ],
-  'Business Integration and Automations': [
-    <FaNpm className="animate-bounce" size={30} />,
-    <FaNodeJs className="animate-bounce" size={30} />,
-  ],
-  'Graphic Designing': [
-    <FaCss3Alt className="animate-bounce" size={30} />,
-    <FaReact className="animate-bounce" size={30} />,
-    <FaSass className="animate-bounce" size={30} />,
-  ],
-  'Video Editing': [
-    <FaWordpressSimple className="animate-bounce" size={30} />,
-    <FaPython className="animate-bounce" size={30} />,
-    <FaReact className="animate-bounce" size={30} />,
-  ],
-};
-
-const services = [
-  { title: 'Website Design', description: 'Creating visually appealing and user-friendly websites tailored to your business needs.', icons: icons['Website Design'] },
-  { title: 'Mobile Applications', description: 'Developing responsive and high-performance mobile apps that engage users effectively.', icons: icons['Mobile Applications'] },
-  { title: 'Web Applications', description: 'Building robust and scalable web applications for various industries.', icons: icons['Web Applications'] },
-  { title: 'E-commerce Websites', description: 'Designing and developing online stores with optimized user experiences.', icons: icons['E-commerce Websites'] },
-  { title: 'Database Management', description: 'Managing and optimizing databases for enhanced performance and reliability.', icons: icons['Database Management'] },
-  { title: 'API Development', description: 'Creating and integrating APIs for seamless connectivity and functionality.', icons: icons['API Development'] },
-  { title: 'Business Integration and Automations', description: 'Streamlining business processes and automating tasks for increased efficiency.', icons: icons['Business Integration and Automations'] },
-  { title: 'Graphic Designing', description: 'Designing creative graphics for branding and marketing across various platforms.', icons: icons['Graphic Designing'] },
-  { title: 'Video Editing', description: 'Editing and producing high-quality video content for marketing and engagement.', icons: icons['Video Editing'] },
-];
-
-const ServiceCard = ({ title, description, icons, isLeft }) => (
-  <motion.div
-    className={`service-cards max-w-md h-48 rounded-lg border-2 border-darkColor dark:border-lightColor bg-thirdprimary text-lightColor p-6 m-4 flex flex-col justify-between items-center text-center transition-transform transform hover:scale-110 hover:shadow-2xl hover:shadow-blue-500 ease-in-out relative overflow-hidden ${isLeft ? 'mr-auto' : 'ml-auto'}`}
-    initial={{ opacity: 0, x: isLeft ? -50 : 50 }}
-    animate={{ opacity: 1, x: 0 }}
-    transition={{ duration: 0.5 }}
-  >
-    <div className="absolute inset-0 opacity-20 rounded-lg"></div>
-    <div className="relative z-10">
-      <div className="font-bold text-xl mb-2 text-darkColor dark:text-lightColor">{title}</div>
-      <p className="text-darkGray dark:text-lightGray text-base">{description}</p>
-    </div>
-    <div className="relative z-10 mt-4 text-darkGray dark:text-lightGray flex justify-center">
-      {icons.map((icon, index) => (
-        <div key={index} className="mx-2 transition-transform transform hover:scale-125">{icon}</div>
-      ))}
-    </div>
-  </motion.div>
-);
-
 const Services = () => {
   const servicesRef = useRef(null);
 
@@ -114,15 +35,11 @@ const Services = () => {
   ]
 
   return (
-    // <div 
-    //   ref={servicesRef} 
-    //   className="min-h-screen overflow-hidden p-4"  
-    //   style={{ overflowY: 'auto', height: '100vh' }}
-    // >
+
     <section className={`h-screen snap-start px-4 py-12 overflow-auto`}>
       {/* Icons Section */}
       <h1 className="text-4xl font-bold text-center text-darkColor dark:text-lightColor mb-8">Services</h1>
-      <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5  overflow-auto h-3/4 py-4 px-12 sm:px-24 lg:px-36">
+      <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 h-3/4 py-4 px-12 sm:px-24 lg:px-36">
         {iconsArray.map((item, index) => (
           <motion.div
             key={index}
@@ -135,26 +52,7 @@ const Services = () => {
         ))}
       </div>
 
-      {/* Service Cards Section */}
-      {/* <div className="flex flex-col items-center mt-10 relative">
-        <div className="absolute left-1/2 transform -translate-x-1/2 h-full border-l-2 border-darkGray dark:border-lightGray"></div>
-        <div className="flex flex-wrap justify-center">
-          {services.map((service, index) => (
-            <div key={index} className={`w-full flex justify-${index % 2 === 0 ? 'end' : 'start'} p-4 relative`}>
-              <ServiceCard
-                title={service.title}
-                description={service.description}
-                icons={service.icons}
-                isLeft={index % 2 !== 0}
-              />
-              {index < services.length - 1 && (
-                <div className="max-lg:hidden absolute h-1 w-12 bg-darkGray dark:bg-lightGray left-1/2 transform -translate-x-1/2 top-24"></div>
-              )}
-            </div>
-          ))}
-        </div>
-        <div className="absolute h-full border-l-2 border-darkGray dark:border-lightGray left-1/2 transform -translate-x-1/2 top-0"></div>
-      </div> */}
+
     </section>
   );
 };

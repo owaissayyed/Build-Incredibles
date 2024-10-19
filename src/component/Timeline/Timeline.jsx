@@ -5,9 +5,9 @@ import 'react-vertical-timeline-component/style.min.css';
 
 export default function Timeline() {
     return (
-        <section className={`h-screen max-h-screen snap-start pt-12 overflow-auto px-4`}>
+        <section className={` snap-start pt-12 px-4`}>
             <h2 className="text-3xl font-bold text-center mb-8 text-darkColor dark:text-lightColor">Our Story</h2>
-            <div className='h-3/4 overflow-auto py-4 px-12 sm:px-24 lg:px-36'>
+            <div className='  py-4 px-12 sm:px-24 lg:px-36'>
                 <VerticalTimeline>
                     <VerticalTimelineElement
                         className="vertical-timeline-element--work"

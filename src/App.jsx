@@ -1,10 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Header from './component/header';
 import Typewriter from './component/BI-Text';
 import Information from './component/BI-inform';
 import Services from './component/Services';
 import Meet from './component/BI-Meet';
+import FooterComponent from './component/footer';
 import Team from './component/BI-Team';
 import ParticlesBackground from './particalbackground';
 import MotionSection from './Motion';
@@ -13,39 +14,19 @@ import { AiOutlineSun, AiOutlineMoon } from 'react-icons/ai';
 import { motion } from 'framer-motion';
 import Timeline from './component/Timeline/Timeline';
 import { AiOutlineArrowDown } from 'react-icons/ai';
-import "./App.css"
+import "./App.css";
 
-
-
-const Section = ({ title, children, bgColor }) => {
+const SnapScrollContainer = ({ children }) => {
     return (
-        <section className={`h-screen flex justify-center items-center ${bgColor} snap-start`}>
-            <div className="text-center p-4">
-                <h1 className="text-3xl font-bold mb-4">{title}</h1>
-                <div className="max-w-md mx-auto">
-                    {children}
-                </div>
-            </div>
-        </section>
+        <div className="snap-y snap-mandatory h-screen overflow-y-scroll">
+            {children}
+        </div>
     );
 };
 
-const sections = [
-    { component: <Header /> },
-    { component: <Typewriter /> },
-    { component: <Information /> },
-    { component: <Team /> },
-    { component: <Services /> },
-    { component: <Meet /> },
-];
-
 const App = () => {
-    const sectionRefs = useRef([]);
-    const [visibleSection, setVisibleSection] = useState(0);
-    const [isVisible, setIsVisible] = useState(true);
-    const { toggleTheme, theme } = useTheme();
     const component1Ref = useRef(null);
-
+    const { toggleTheme, theme } = useTheme();
 
     const buttonVariants = {
         float: {
@@ -54,8 +35,8 @@ const App = () => {
                 duration: 2,
                 ease: "easeInOut",
                 repeat: Infinity,
-            }
-        }
+            },
+        },
     };
 
     const scrollToInfo = () => {
@@ -63,19 +44,26 @@ const App = () => {
     };
 
     return (
-        <div className="snap-y snap-mandatory h-screen overflow-y-scroll "
-        >
-
+        <div className="h-screen overflow-y-scroll">
             <ParticlesBackground />
-            <Header />
-            <Typewriter scrollToInfo={scrollToInfo} />
-            <div ref={component1Ref}>
-                <Information />
-            </div>
-            <Team />
-            <Services />
-            <Timeline />
-            <Meet />
+            <SnapScrollContainer>
+    <Header />
+    <Typewriter scrollToInfo={scrollToInfo} />
+    <div ref={component1Ref}>
+        <Information />
+    </div>
+</SnapScrollContainer>
+
+{/* Normal scrolling components */}
+<div className="relative">
+    <Team />
+    <Services />
+    <Timeline />
+    <Meet />
+    <FooterComponent/>
+</div>
+
+
             <div className="fixed bottom-5 right-5">
                 <motion.button
                     onClick={toggleTheme}
@@ -90,7 +78,7 @@ const App = () => {
                     )}
                 </motion.button>
             </div>
-        </div >
+        </div>
     );
 };
 

@@ -25,7 +25,7 @@ const Meet = () => {
     };
 
     return (
-        <section className="h-screen flex justify-center items-center text-center snap-start p-4 overflow-auto">
+        <section className="h-screen flex justify-center items-center text-center snap-start p-4 ">
             <div className='w-90 flex flex-col items-center'>
                 <motion.h1
                     className='text-2xl sm:text-4xl md:text-5xl font-bold text-darkColor dark:text-lightColor'

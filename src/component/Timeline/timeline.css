@@ -1,0 +1,8 @@
+/* In your CSS file */
+.timeline-section {
+    min-height: 100vh; /* or another height */
+}
+
+.snap-y {
+    scroll-snap-type: y mandatory;
+}
