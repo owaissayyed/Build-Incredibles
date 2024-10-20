@@ -7,16 +7,41 @@ body {
   /* Prevent default scrolling */
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 
 
 .snap-y {
   scroll-snap-type: y mandatory;
+  overflow-y: auto; /* Enable scrolling */
+  height: 100vh; /* Adjust height if needed */
 }
 
-.snap-start {
-  scroll-snap-align: start;
+
+.snap-mandatory {
+  overflow-y: auto; /* Allow scrolling */
 }
 
+
+.loading-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.8); /* Optional: background overlay */
+}
+
+.loading-gif {
+  max-width: 80%; /* Makes the GIF responsive */
+  max-height: 80%; /* Prevents overflow on smaller screens */
+  height: auto; /* Maintains aspect ratio */
+}
 
 
 /* Hide scrollbar for all elements */

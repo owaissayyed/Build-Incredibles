@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Header from './component/header';
 import Typewriter from './component/BI-Text';
@@ -9,14 +9,12 @@ import Meet from './component/BI-Meet';
 import Team from './component/BI-Team';
 import FooterComponent from './component/footer';
 import ParticlesBackground from './particalbackground';
-import MotionSection from './Motion';
 import { ThemeProvider, useTheme } from './themeContext';
 import { AiOutlineSun, AiOutlineMoon } from 'react-icons/ai';
 import { motion } from 'framer-motion';
 import Timeline from './component/Timeline/Timeline';
-import { AiOutlineArrowDown } from 'react-icons/ai';
-import "./App.css";
-import CustomCursor from './component/customecursor'; // Import custom cursor
+import Loading from './loading'; // Import the loading component
+import './App.css';
 
 const SnapScrollContainer = ({ children }) => {
     return (
@@ -27,8 +25,40 @@ const SnapScrollContainer = ({ children }) => {
 };
 
 const App = () => {
+    const [loading, setLoading] = useState(true);
     const component1Ref = useRef(null);
     const { toggleTheme, theme } = useTheme();
+    const customCursorRef = useRef(null);
+
+    useEffect(() => {
+        // Simulate a loading delay (e.g., fetching data)
+        const timer = setTimeout(() => {
+            setLoading(false);
+        }, 2000); // Change this to your desired loading time
+
+        return () => clearTimeout(timer);
+    }, []);
+
+    useEffect(() => {
+        const handleMouseMove = (e) => {
+            if (customCursorRef.current) {
+                customCursorRef.current.style.left = `${e.clientX}px`;
+                customCursorRef.current.style.top = `${e.clientY}px`;
+
+                // Calculate shadow distance
+                const shadowDistance = 20; // Fixed distance for visibility
+                customCursorRef.current.style.boxShadow = `
+                    0 0 ${shadowDistance}px rgba(255, 255, 255, 0.8),
+                    0 0 ${shadowDistance * 2}px rgba(255, 255, 255, 0.5)
+                `;
+            }
+        };
+
+        window.addEventListener('mousemove', handleMouseMove);
+        return () => {
+            window.removeEventListener('mousemove', handleMouseMove);
+        };
+    }, []);
 
     const buttonVariants = {
         float: {
@@ -42,13 +72,18 @@ const App = () => {
     };
 
     const scrollToInfo = () => {
-        component1Ref.current.scrollIntoView({ behavior: 'smooth' });
+        if (component1Ref.current) {
+            component1Ref.current.scrollIntoView({ behavior: 'smooth' });
+        }
     };
+
+    if (loading) {
+        return <Loading />; // Show loading component while loading
+    }
 
     return (
         <div className="h-screen overflow-y-scroll">
             <ParticlesBackground />
-            <CustomCursor /> {/* Add custom cursor here */}
             <SnapScrollContainer>
                 <Header />
                 <Typewriter scrollToInfo={scrollToInfo} />
@@ -57,7 +92,6 @@ const App = () => {
                 </div>
             </SnapScrollContainer>
 
-            {/* Normal scrolling components */}
             <div className="relative">
                 <Team />
                 <Services />
@@ -81,6 +115,9 @@ const App = () => {
                     )}
                 </motion.button>
             </div>
+
+            {/* Custom Cursor */}
+            <div ref={customCursorRef} className="custom-cursor" />
         </div>
     );
 };
