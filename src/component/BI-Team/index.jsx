@@ -1,6 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { FaLinkedinIn, FaGithub, FaInstagram, FaMedium } from 'react-icons/fa'; 
+import React from "react";
+import { FaLinkedinIn, FaGithub, FaInstagram, FaMedium } from "react-icons/fa"; 
+import PropTypes from "prop-types";
 import './team.css';
+
+// Import your team member images
 import Arhamphoto from './Team-img/Arham.jpg';
 import Yashphoto from './Team-img/Yash.jpeg';
 import Owaisphoto from './Team-img/Owais.jpeg';
@@ -11,121 +14,127 @@ import Sufiyanphoto from './Team-img/Sufiyan.jpg';
 
 const teamMembers = [
   {
-    name: 'Arham Sayyed',
-    role: 'Founder & Full Stack Developer',
-    image: Arhamphoto,
-    description: 'Passionate Full Stack Developer & Security Researcher',
-    socialLinks: {
-      linkedin: 'https://www.linkedin.com/in/arham-sayyed',
-      github: 'http://github.com/arham-sayyed',
-      instagram: 'http://instagram.com/_thatguywearinghoodie',
-    },
+    picture: Arhamphoto,
+    fullName: 'Arham Sayyed',
+    designation: 'Founder & Full Stack Developer',
+    bio: 'Passionate Full Stack Developer & Security Researcher',
+    socialLinks: [
+      { icon: FaLinkedinIn, href: 'https://www.linkedin.com/in/arham-sayyed' },
+      { icon: FaGithub, href: 'http://github.com/arham-sayyed' },
+      { icon: FaInstagram, href: 'http://instagram.com/_thatguywearinghoodie' },
+    ],
   },
   {
-    name: 'Yash Chauhan',
-    role: 'Full Stack Developer',
-    image: Yashphoto,
-    description: 'A passionate and innovative software developer with hands-on experience in full-stack development and blockchain technology.',
-    socialLinks: {
-      linkedin: 'https://www.linkedin.com/in/yash-chauhan-180031203/',
-      github: 'http://github.com/itsYashASeeker',
-      instagram: 'https://www.instagram.com/yashck.iso/',
-    },
+    picture: Yashphoto,
+    fullName: 'Yash Chauhan',
+    designation: 'Full Stack Developer',
+    bio: 'A passionate and innovative software developer with hands-on experience in full-stack development and blockchain technology.',
+    socialLinks: [
+      { icon: FaLinkedinIn, href: 'https://www.linkedin.com/in/yash-chauhan-180031203/' },
+      { icon: FaGithub, href: 'http://github.com/itsYashASeeker' },
+      { icon: FaInstagram, href: 'https://www.instagram.com/yashck.iso/' },
+    ],
   },
   {
-    name: 'Owais Sayyed',
-    role: 'Frontend & API Developer',
-    image: Owaisphoto,
-    description: 'Dedicated to building responsive user interfaces and seamless API integrations.',
-    socialLinks: {
-      linkedin: 'https://www.linkedin.com/in/owais-sayyed-361a04290/',
-      github: 'http://github.com/owaissayyed',
-      instagram: 'https://www.instagram.com/owaissayyed__/',
-    },
+    picture: Owaisphoto,
+    fullName: 'Owais Sayyed',
+    designation: 'Frontend & API Developer',
+    bio: 'Dedicated to building responsive user interfaces and seamless API integrations.',
+    socialLinks: [
+      { icon: FaLinkedinIn, href: 'https://www.linkedin.com/in/owais-sayyed-361a04290/' },
+      { icon: FaGithub, href: 'http://github.com/owaissayyed' },
+      { icon: FaInstagram, href: 'https://www.instagram.com/owaissayyed__/' },
+    ],
   },
   {
-    name: 'Arsalan Mirza',
-    role: 'Security & Penetration Tester',
-    image: Arsalanphoto,
-    description: 'A passionate bug hunter and security researcher.',
-    socialLinks: {
-      linkedin: 'https://www.linkedin.com/in/arsalan-mirza-b1a87b216/',
-      instagram: 'https://www.instagram.com/arsalan.mirza/',
-    },
+    picture: Arsalanphoto,
+    fullName: 'Arsalan Mirza',
+    designation: 'Security & Penetration Tester',
+    bio: 'A passionate bug hunter and security researcher.',
+    socialLinks: [
+      { icon: FaLinkedinIn, href: 'https://www.linkedin.com/in/arsalan-mirza-b1a87b216/' },
+      { icon: FaInstagram, href: 'https://www.instagram.com/arsalan.mirza/' },
+    ],
   },
   {
-    name: 'Fardeen Khan',
-    role: 'Finance & Management',
-    image: Fardeenphoto,
-    description: 'Web Developer with a Keen Interest In Finance & Management.',
-    socialLinks: {
-      linkedin: 'https://www.linkedin.com/in/fardeenfkhan',
-      instagram: 'http://instagram.com/jst_fardeen',
-    },
+    picture: Fardeenphoto,
+    fullName: 'Fardeen Khan',
+    designation: 'Finance & Management',
+    bio: 'Web Developer with a Keen Interest In Finance & Management.',
+    socialLinks: [
+      { icon: FaLinkedinIn, href: 'https://www.linkedin.com/in/fardeenfkhan' },
+      { icon: FaInstagram, href: 'http://instagram.com/jst_fardeen' },
+    ],
   },
   {
-    name: 'Sufiyan Shaikh',
-    role: 'Editor and videographer',
-    image: Sufiyanphoto,
-    description: 'Editor and videographer who loves using imagination to create engaging stories.',
-    socialLinks: {
-      instagram: 'https://www.instagram.com/iam___sufiyan?igsh=c2ZwcXU3emtyOXk5&utm_source=qr',
-    },
+    picture: Sufiyanphoto,
+    fullName: 'Sufiyan Shaikh',
+    designation: 'Editor and Videographer',
+    bio: 'Editor and videographer who loves using imagination to create engaging stories.',
+    socialLinks: [
+      { icon: FaInstagram, href: 'https://www.instagram.com/iam___sufiyan?igsh=c2ZwcXU3emtyOXk5&utm_source=qr' },
+    ],
   },
   {
-    name: 'Afrah Shaikh',
-    role: 'Content Writer',
-    image: afrahphoto,
-    description: 'A creative content writer who enjoys crafting engaging stories.',
-    socialLinks: {
-      medium: 'https://medium.com/@afrahshaikh114'
-    },
+    picture: afrahphoto,
+    fullName: 'Afrah Shaikh',
+    designation: 'Content Writer',
+    bio: 'A creative content writer who enjoys crafting engaging stories.',
+    socialLinks: [
+      { icon: FaMedium, href: 'https://medium.com/@afrahshaikh114' },
+    ],
   }
 ];
 
-const TeamComponent = () => {
-  const [flippedIndex, setFlippedIndex] = useState(null);
-
-  const handleClick = (index) => {
-    setFlippedIndex(flippedIndex === index ? null : index);
-  };
-
-  return (
-    <section className=" py-12 snap-start px-4">
-      <h1 className="text-4xl font-bold text-center mb-8 text-darkColor dark:text-lightColor">Meet Our Team</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12 justify-center w-full h-auto py-4 px-12 sm:px-24 lg:px-36">
-        {teamMembers.map((member, index) => (
-          <div key={index} className="card-container" onClick={() => handleClick(index)} >
-            <div className={`card ${flippedIndex === index ? 'flipped' : ''}`}>
-              <div className="card-front bg-thirdprimary" >
-                <div className="flex justify-center items-center h-32">
-                  <img className="w-24 h-24 object-cover rounded-full border-4 border-white" src={member.image} alt={member.name} />
-                </div>
-                <div className="p-6 flex flex-col items-center text-center">
-                  <h3 className="text-2xl font-semibold text-gray-800">{member.name}</h3>
-                  <p className="text-lightColor text-lg mt-2">{member.role}</p>
-                </div>
-              </div>
-              <div className="card-back bg-gray-500">
-                <p className="description text-lightColor">{member.description}</p>
-                <div className="social-links flex justify-center items-center gap-2 hover:shadow-white">
-                  <a href={member.socialLinks.linkedin} target="_blank" rel="noopener noreferrer">
-                    <FaLinkedinIn />
-                  </a>
-                  <a href={member.socialLinks.github} target="_blank" rel="noopener noreferrer">
-                    <FaGithub />
-                  </a>
-                  <a href={member.socialLinks.instagram} target="_blank" rel="noopener noreferrer">
-                    <FaInstagram />
-                  </a>
-                  <a href={member.socialLinks.medium} target="_blank" rel="noopener noreferrer">
-                    <FaMedium />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
+const TeamMemberItem = ({ member }) => (
+  <div className="bg-slate-800 shadow-xl rounded-xl hover:-translate-y-1 duration-500 h-full p-6 lg:p-8">
+    <img
+      src={member.picture}
+      alt={member.fullName}
+      className="w-32 h-32 rounded-full border-4 p-1 border-blue-600 mx-auto -mt-20"
+      style={{ objectFit: "cover" }} // Ensures images maintain aspect ratio
+    />
+    <div className="mt-6">
+      <h4 className="text-2xl font-medium mb-1">{member.fullName}</h4>
+      <p className="mb-4 text-sm">{member.designation}</p>
+      <p className="opacity-50">{member.bio}</p>
+      <div className="mt-6">
+        {member.socialLinks.map((item, i) => (
+          <a
+            href={item.href}
+            className={`inline-block opacity-60 transition duration-300 hover:translate-y-1 hover:opacity-100 ${i + 1 !== member.socialLinks.length && "mr-4"}`}
+            key={i}
+          >
+            <item.icon />
+          </a>
         ))}
+      </div>
+    </div>
+  </div>
+);
+
+TeamMemberItem.propTypes = {
+  member: PropTypes.object.isRequired,
+};
+
+const TeamComponent = () => {
+  return (
+    <section className="ezy__team10 light py-14 md:py-24 text-white">
+      <div className="container px-4 mx-auto">
+        <div className="flex justify-center mb-6 md:mb-12">
+          <div className="max-w-lg text-center ">
+            <h2 className="text-3xl leading-none font-bold md:text-[45px] mb-4 text-zinc-900 dark:text-white">Meet Our Team</h2>
+            <p className="text-zinc-900 dark:text-white mb-7">We are a passionate team dedicated to innovation and excellence.</p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-center pt-6 ">
+          {teamMembers.map((member, i) => (
+            <div className="flex justify-center mb-8" key={i}>
+              <TeamMemberItem member={member} />
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

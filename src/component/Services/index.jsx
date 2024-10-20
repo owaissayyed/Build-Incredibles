@@ -36,7 +36,7 @@ const Services = () => {
 
   return (
 
-    <section className={`h-screen snap-start px-4 py-12 overflow-auto`}>
+    <section className={`h-screen snap-start px-4 py-12 `}>
       {/* Icons Section */}
       <h1 className="text-4xl font-bold text-center text-darkColor dark:text-lightColor mb-8">Services</h1>
       <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 h-3/4 py-4 px-12 sm:px-24 lg:px-36">

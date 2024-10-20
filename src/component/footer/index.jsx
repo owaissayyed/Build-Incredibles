@@ -6,7 +6,7 @@ export function FooterComponent() {
   return (
     <footer className="bg-gray-600 text-white py-8">
       <div className="container mx-auto">
-        <div className="flex flex-col sm:flex-row justify-between items-start">
+        <div className="flex flex-col sm:flex-row justify-between items-start ml-5">
           <div className="flex items-center">
             <img src={BuildIncredibleslogo} alt="Build Incredibles Logo" className="h-10 mr-2 rounded-full" />
             <span className="text-lg font-bold">Build Incredibles</span>
@@ -19,8 +19,8 @@ export function FooterComponent() {
                 <li><a href="#" className="hover:underline">Tailwind CSS</a></li>
               </ul>
             </div> */}
-            <div>
-              <h3 className="font-semibold">Follow us</h3>
+            <div className='ml-5'>
+              <h3 className="font-semibold ">Follow us</h3>
               <ul>
                 <li><a href="#" className="hover:underline">Github</a></li>
                 <li><a href="#" className="hover:underline">Discord</a></li>
@@ -35,8 +35,8 @@ export function FooterComponent() {
             </div>
           </div>
         </div>
-        <div className="border-t border-gray-500 my-4" />
-        <div className="flex flex-col sm:flex-row justify-between items-center">
+        <div className="border-t border-gray-500 my-4 " />
+        <div className="flex flex-col sm:flex-row justify-between items-center mr-5 sm:mr-0">
           <p className="text-sm">&copy; {new Date().getFullYear()} Build Incredibles™</p>
           <div className="mt-4 flex space-x-6 sm:mt-0">
             <a href="#" className="hover:text-gray-400"><BsFacebook size={20} /></a>
