@@ -1,12 +1,13 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Header from './component/header';
 import Typewriter from './component/BI-Text';
 import Information from './component/BI-inform';
+import Textstack from './component/Textstack';
 import Services from './component/Services';
 import Meet from './component/BI-Meet';
-import FooterComponent from './component/footer';
 import Team from './component/BI-Team';
+import FooterComponent from './component/footer';
 import ParticlesBackground from './particalbackground';
 import MotionSection from './Motion';
 import { ThemeProvider, useTheme } from './themeContext';
@@ -15,6 +16,7 @@ import { motion } from 'framer-motion';
 import Timeline from './component/Timeline/Timeline';
 import { AiOutlineArrowDown } from 'react-icons/ai';
 import "./App.css";
+import CustomCursor from './component/customecursor'; // Import custom cursor
 
 const SnapScrollContainer = ({ children }) => {
     return (
@@ -46,23 +48,24 @@ const App = () => {
     return (
         <div className="h-screen overflow-y-scroll">
             <ParticlesBackground />
+            <CustomCursor /> {/* Add custom cursor here */}
             <SnapScrollContainer>
-    <Header />
-    <Typewriter scrollToInfo={scrollToInfo} />
-    <div ref={component1Ref}>
-        <Information />
-    </div>
-</SnapScrollContainer>
+                <Header />
+                <Typewriter scrollToInfo={scrollToInfo} />
+                <div ref={component1Ref}>
+                    <Information />
+                </div>
+            </SnapScrollContainer>
 
-{/* Normal scrolling components */}
-<div className="relative">
-    <Team />
-    <Services />
-    <Timeline />
-    <Meet />
-    <FooterComponent/>
-</div>
-
+            {/* Normal scrolling components */}
+            <div className="relative">
+                <Team />
+                <Services />
+                <Textstack />
+                <Timeline />
+                <Meet />
+                <FooterComponent />
+            </div>
 
             <div className="fixed bottom-5 right-5">
                 <motion.button
