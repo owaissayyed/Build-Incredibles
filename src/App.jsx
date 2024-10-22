@@ -31,7 +31,6 @@ const App = () => {
     const customCursorRef = useRef(null);
 
     useEffect(() => {
-        // Simulate a loading delay (e.g., fetching data)
         const timer = setTimeout(() => {
             setLoading(false);
         }, 2000); // Change this to your desired loading time
@@ -39,26 +38,28 @@ const App = () => {
         return () => clearTimeout(timer);
     }, []);
 
+    const handleMouseMove = (e) => {
+        if (customCursorRef.current) {
+            customCursorRef.current.style.left = `${e.clientX}px`;
+            customCursorRef.current.style.top = `${e.clientY}px`;
+
+            // Set shadow based on the theme
+            const shadowColor = theme === 'dark' ? 'rgba(255, 255, 255, 0.9)' : 'rgba(0, 0, 0, 0.8)'; // Darker shadow in light mode
+            const shadowColor2 = theme === 'dark' ? 'rgba(255, 255, 255, 0.5)' : 'rgba(0, 0, 0, 0.7)'; // Slightly darker second shadow
+    
+            customCursorRef.current.style.filter = `
+                drop-shadow(0 0 20px ${shadowColor}) 
+                drop-shadow(0 0 10px ${shadowColor2})
+            `;
+        }
+    };
+
     useEffect(() => {
-        const handleMouseMove = (e) => {
-            if (customCursorRef.current) {
-                customCursorRef.current.style.left = `${e.clientX}px`;
-                customCursorRef.current.style.top = `${e.clientY}px`;
-
-                // Calculate shadow distance
-                const shadowDistance = 20; // Fixed distance for visibility
-                customCursorRef.current.style.boxShadow = `
-                    0 0 ${shadowDistance}px rgba(255, 255, 255, 0.8),
-                    0 0 ${shadowDistance * 2}px rgba(255, 255, 255, 0.5)
-                `;
-            }
-        };
-
         window.addEventListener('mousemove', handleMouseMove);
         return () => {
             window.removeEventListener('mousemove', handleMouseMove);
         };
-    }, []);
+    }, [theme]); // Add theme as a dependency to re-run effect on theme change
 
     const buttonVariants = {
         float: {
@@ -82,7 +83,7 @@ const App = () => {
     }
 
     return (
-        <div className="h-screen overflow-y-scroll">
+        <div className="h-screen overflow-y-scroll App">
             <ParticlesBackground />
             <SnapScrollContainer>
                 <Header />

@@ -13,100 +13,42 @@ export default function Timeline() {
                         className="vertical-timeline-element--work"
                         contentStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
                         contentArrowStyle={{ borderRight: '7px solid  rgb(33, 150, 243)' }}
-                        date="2011 - present"
+                        // date="2011 - present"
                         iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
                         icon={<IoCodeWorking />}
                     >
-                        <h3 className="vertical-timeline-element-title">Creative Director</h3>
-                        <h4 className="vertical-timeline-element-subtitle">Miami, FL</h4>
+                        <h3 className="vertical-timeline-element-title"> Bridging the E-Commerce Gap</h3>
+                        <h4 className="vertical-timeline-element-subtitle">Empowering Local Vendors and Customers for a Better Tomorrow</h4>
                         <p>
-                            Creative Direction, User Experience, Visual Design, Project Management, Team Leading
+                        At Build Incredibles, we recognized a gap in the e-commerce world: many local vendors and customers felt overlooked. Our founder saw that while e-commerce benefited some, it wasn’t helping enough people. We wanted to change that.
+                        </p>
+                    </VerticalTimelineElement>
+
+                    <VerticalTimelineElement
+                        className="vertical-timeline-element--work"
+                        // date="2010 - 2011"
+                        iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
+                        icon={<IoCodeWorking />}
+                    >
+                        <h3 className="vertical-timeline-element-title"> A Vision for Inclusive E-Commerce</h3>
+                        <h4 className="vertical-timeline-element-subtitle"> Empowering Local Businesses and Simplifying Shopping for All</h4>
+                        <p>
+                        we want to help businesses reach a larger audience while ensuring customers can easily shop from their favorite local sellers. We believe that e-commerce should work for everyone, not just a select few. Our mission is to empower businesses to connect with customers without the usual hassles of online shopping
                         </p>
                     </VerticalTimelineElement>
                     <VerticalTimelineElement
                         className="vertical-timeline-element--work"
-                        date="2010 - 2011"
+                        // date="2008 - 2010"
                         iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
                         icon={<IoCodeWorking />}
                     >
-                        <h3 className="vertical-timeline-element-title">Art Director</h3>
-                        <h4 className="vertical-timeline-element-subtitle">San Francisco, CA</h4>
+                        <h3 className="vertical-timeline-element-title">Building Community Through Connection</h3>
+                        <h4 className="vertical-timeline-element-subtitle"> Fostering Positive Experiences for Producers and Consumers Alike</h4>
                         <p>
-                            Creative Direction, User Experience, Visual Design, SEO, Online Marketing
+                        We strive to create a community where both producers and consumers benefit, ensuring that every transaction is a positive experience. At Build Incredibles, we are dedicated to building not just websites but lasting relationships that strengthen our community.
                         </p>
                     </VerticalTimelineElement>
-                    <VerticalTimelineElement
-                        className="vertical-timeline-element--work"
-                        date="2010 - 2011"
-                        iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
-                        icon={<IoCodeWorking />}
-                    >
-                        <h3 className="vertical-timeline-element-title">Art Director</h3>
-                        <h4 className="vertical-timeline-element-subtitle">San Francisco, CA</h4>
-                        <p>
-                            Creative Direction, User Experience, Visual Design, SEO, Online Marketing
-                        </p>
-                    </VerticalTimelineElement>
-                    <VerticalTimelineElement
-                        className="vertical-timeline-element--work"
-                        date="2008 - 2010"
-                        iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
-                        icon={<IoCodeWorking />}
-                    >
-                        <h3 className="vertical-timeline-element-title">Web Designer</h3>
-                        <h4 className="vertical-timeline-element-subtitle">Los Angeles, CA</h4>
-                        <p>
-                            User Experience, Visual Design
-                        </p>
-                    </VerticalTimelineElement>
-                    <VerticalTimelineElement
-                        className="vertical-timeline-element--work"
-                        date="2006 - 2008"
-                        iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
-                        icon={<IoCodeWorking />}
-                    >
-                        <h3 className="vertical-timeline-element-title">Web Designer</h3>
-                        <h4 className="vertical-timeline-element-subtitle">San Francisco, CA</h4>
-                        <p>
-                            User Experience, Visual Design
-                        </p>
-                    </VerticalTimelineElement>
-                    <VerticalTimelineElement
-                        className="vertical-timeline-element--education"
-                        date="April 2013"
-                        iconStyle={{ background: 'rgb(233, 30, 99)', color: '#fff' }}
-                        icon={<IoCodeWorking />}
-                    >
-                        <h3 className="vertical-timeline-element-title">Content Marketing for Web, Mobile and Social Media</h3>
-                        <h4 className="vertical-timeline-element-subtitle">Online Course</h4>
-                        <p>
-                            Strategy, Social Media
-                        </p>
-                    </VerticalTimelineElement>
-                    <VerticalTimelineElement
-                        className="vertical-timeline-element--education"
-                        date="November 2012"
-                        iconStyle={{ background: 'rgb(233, 30, 99)', color: '#fff' }}
-                        icon={<IoCodeWorking />}
-                    >
-                        <h3 className="vertical-timeline-element-title">Agile Development Scrum Master</h3>
-                        <h4 className="vertical-timeline-element-subtitle">Certification</h4>
-                        <p>
-                            Creative Direction, User Experience, Visual Design
-                        </p>
-                    </VerticalTimelineElement>
-                    <VerticalTimelineElement
-                        className="vertical-timeline-element--education"
-                        date="2002 - 2006"
-                        iconStyle={{ background: 'rgb(233, 30, 99)', color: '#fff' }}
-                        icon={<IoCodeWorking />}
-                    >
-                        <h3 className="vertical-timeline-element-title">Bachelor of Science in Interactive Digital Media Visual Imaging</h3>
-                        <h4 className="vertical-timeline-element-subtitle">Bachelor Degree</h4>
-                        <p>
-                            Creative Direction, Visual Design
-                        </p>
-                    </VerticalTimelineElement>
+
                 </VerticalTimeline>
             </div>
         </section>

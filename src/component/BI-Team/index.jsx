@@ -38,8 +38,8 @@ const teamMembers = [
   {
     picture: Owaisphoto,
     fullName: 'Owais Sayyed',
-    designation: 'Frontend & API Developer',
-    bio: 'Dedicated to building responsive user interfaces and seamless API integrations.',
+    designation: 'MERN Stack Developer',
+    bio: ' A MERN stack developer skilled in building dynamic web applications, combining responsive front-end design with efficient back-end functionality. Proficient in API integration and database management for scalable solutions.',
     socialLinks: [
       { icon: FaLinkedinIn, href: 'https://www.linkedin.com/in/owais-sayyed-361a04290/' },
       { icon: FaGithub, href: 'http://github.com/owaissayyed' },
@@ -124,7 +124,7 @@ const TeamComponent = () => {
         <div className="flex justify-center mb-6 md:mb-12">
           <div className="max-w-lg text-center ">
             <h2 className="text-3xl leading-none font-bold md:text-[45px] mb-4 text-zinc-900 dark:text-white">Meet Our Team</h2>
-            <p className="text-zinc-900 dark:text-white mb-7">We are a passionate team dedicated to innovation and excellence.</p>
+            <p className="text-zinc-900 dark:text-white mb-7">Our dedicated team is the heart of Build Incredibles, and we are proud to introduce the talented individuals who make it all happen:</p>
           </div>
         </div>
 

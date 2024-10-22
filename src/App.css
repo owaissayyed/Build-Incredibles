@@ -4,8 +4,13 @@ body {
   margin: 0;
   padding: 0;
   overflow: hidden;
+  cursor: none;
   /* Prevent default scrolling */
 }
+/* Add this to your App.css or a relevant CSS file */
+
+
+
 
 html {
   scroll-behavior: smooth;
@@ -54,3 +59,52 @@ html {
   display: none;
   /* Chrome, Safari, and Opera */
 }
+
+.image-shadow-light {
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5)); /* Lighter black shadow for light mode */
+}
+
+.image-shadow-dark {
+  filter: drop-shadow(0 4px 10px rgba(255, 255, 255, 0.7)); /* White shadow for dark mode */
+}
+
+/* App.css */
+.fixed {
+  z-index: 10; /* Ensure it stays on top */
+}
+
+button {
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: rgba(0, 0, 0, 0.1); /* Add hover effect */
+}
+
+.dark button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+
+.custom-cursor {
+  position: fixed;
+  width: 20px; /* Adjust the size of your cursor */
+  height: 20px; /* Adjust the size of your cursor */
+  pointer-events: none; /* Prevent the cursor from blocking any mouse events */
+  transition: transform 0.1s ease; /* Smooth transition */
+  background-image: url('./assets/cursor.png'); /* Ensure the path is correct */
+  background-size: cover; /* Make the image cover the div */
+  z-index: 1000; /* Ensure it stays on top */
+}
+
+/* Hide the custom cursor on mobile devices */
+@media (max-width: 768px) { /* Adjust the max-width as needed */
+  .custom-cursor {
+    display: none; /* Hide cursor on mobile screens */
+  }
+}
+
+
+
+
+

@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useTheme } from '../../themeContext';
 import MobileWebimg from '../../assets/mobileweb.png';
-import desktopWebimg from '../../assets/web.webp'; 
+import desktopWebimg from '../../assets/web.webp';
+import '../../app.css'
 
 const Header = () => {
     const { toggleTheme } = useTheme();
@@ -26,33 +27,22 @@ const Header = () => {
     };
 
     const firstTerminalStyle = {
-        top: screenWidth < 768 ? '5%' : '10%',
+        top: screenWidth < 768 ? '48%' : '40%',
         left: screenWidth < 768 ? '4%' : '16%',
         width: screenWidth < 768 ? '100px' : '120px',
         position: 'absolute',  // Use absolute here
     };
 
     const secondTerminalStyle = {
-        top: screenWidth < 768 ? '40%' : '40%',
+        top: screenWidth < 768 ? '82%' : '85%',
         left: screenWidth < 768 ? '50%' : '77%',
         width: screenWidth < 768 ? '100px' : '120px',
         position: 'absolute',  // Use absolute here
     };
 
     return (
-        <section className="h-lvh justify-center items-center snap-start relative"> {/* Set relative positioning on the section */}
-            <div className="flex flex-col md:flex-row justify-center relative">
-                <img 
-                    src={desktopWebimg} 
-                    alt="Desktop Website" 
-                    className="w-full md:max-w-[550px] max-w-[80%] h-auto ml-10 mt-[65px]"
-                />
-                <img 
-                    src={MobileWebimg} 
-                    alt="Mobile App" 
-                    className="md:w-[120px] md:h-[280px] w-[70px] h-[150px] md:mt-[90px] md:ml-[-30px] ml-[280px] mt-[-80px]"
-                />
-            </div>
+        <section className="h-lvh justify-center items-center snap-start relative "  > {/* Set relative positioning on the section */}
+
 
             <div>
                 {/* Floating Terminal Elements */}
@@ -91,7 +81,7 @@ const Header = () => {
                     animate="float" 
                     className="bg-gray-800 text-white p-2 rounded-md shadow-md text-left text-sm hidden md:block"
                     style={{
-                        top: '60%',
+                        top: '80%',
                         left: '18%',
                         width: '120px',
                         position: 'absolute', // Use absolute here
@@ -114,20 +104,32 @@ const Header = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.6 }}
                 >
-                    <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-darkColor dark:text-lightColor mt-5">
+                    <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-darkColor dark:text-lightColor md:mt-10 mt-20">
                         Take your business online,
                     </p>
                     <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-secondprimary dark:text-primary">
                         Reach out to the global audience.
                     </p>
                     <p className="text-sm sm:text-base mt-2 text-darkColor dark:text-lightColor font-bold">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                    In today’s digital landscape, having an online presence is crucial for growth. At Build Incredibles,  we help businesses like yours thrive online—whether it’s creating a stunning website or launching your online store. Let’s unlock your potential and elevate your business together!
                     </p>
                     <p className="text-sm sm:text-base text-darkColor dark:text-lightColor font-bold">
-                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+                    Let’s work together to unlock your online potential and elevate your business to new heights!
                     </p>
                 </motion.div>
             </div> 
+            <div className="flex flex-col md:flex-row justify-center relative">
+                <img 
+                    src={desktopWebimg} 
+                    alt="Desktop Website" 
+                    className="w-full md:w-[590px] max-w-[80%] md:h-[360px] h-auto ml-10 md:mt-[30px] mt-[65px]"
+                />
+                <img 
+                    src={MobileWebimg} 
+                    alt="Mobile App" 
+                    className="md:w-[110px] md:h-[250px] w-[70px] h-[150px] md:mt-[160px] md:ml-[-30px] ml-[280px] mt-[-80px]"
+                />
+            </div>
         </section>
     );
 };

@@ -1,8 +1,9 @@
-// themeContext.jsx
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
+// Create the ThemeContext
 const ThemeContext = createContext();
 
+// Create the ThemeProvider component
 export const ThemeProvider = ({ children }) => {
     const [theme, setTheme] = useState('dark'); // Start in dark mode
 
@@ -21,4 +22,8 @@ export const ThemeProvider = ({ children }) => {
     );
 };
 
+// Create a custom hook for easier access to the context
 export const useTheme = () => useContext(ThemeContext);
+
+// Export the ThemeContext for direct access if needed
+export default ThemeContext;
